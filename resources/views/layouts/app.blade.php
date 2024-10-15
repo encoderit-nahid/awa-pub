@@ -156,7 +156,6 @@
 
 
 
-
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -397,9 +396,6 @@ if (!isset($access_token)) {
             var fileExt = file.name.split('.').pop();
             var newFilenameOnly = '{{ uniqid() }}';
             var dPath = '/' + newFilenameOnly + '.' + fileExt;
-
-            const duration = file.duration
-            console.log(duration)
 
 
             if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
