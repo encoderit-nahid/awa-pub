@@ -482,7 +482,7 @@ if (!isset($access_token)) {
                     console.log("dPath", dPath)
                     uploadVideoFlag = false;
                     $("#uploaded-youtube-file-name").val(dPath);
-                    $("button[type=submit]").trigger('click'); // Release
+                    // $("button[type=submit]").trigger('click'); // Release
 
                 }).catch(function (error) {
                     console.error(error);
