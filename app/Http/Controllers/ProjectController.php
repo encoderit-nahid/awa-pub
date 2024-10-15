@@ -978,6 +978,7 @@ class ProjectController extends Controller
 
     public function changeProject(Request $data)
     {
+        dd($data);
         $users = User::all()->keyBy('id');
         // print_r($data->autoUpdateStatus);
         //return $data->all();
