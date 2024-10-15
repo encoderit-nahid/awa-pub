@@ -978,18 +978,16 @@ class ProjectController extends Controller
 
     public function changeProject(Request $data)
     {
-        dd($data);
         $users = User::all()->keyBy('id');
         // print_r($data->autoUpdateStatus);
         //return $data->all();
         //die;
         if ($data->submit == 'change') {
-
             $user = Auth::user();
             $projectID = $data->projectID;
             $catID = $data->catID;
-            $cats = Cat::where('id', '=', $catID)->first();
-            $project = Project::where('id', '=', $projectID)->first();
+            $cats = Cat::where('id', '=', $catID)->firstOrFail();
+            $project = Project::where('id', '=', $projectID)->firstOrFail();
             $changeBlade = $cats->code . '-change';
 
             if (isset($data->autoUpdateStatus)) {
