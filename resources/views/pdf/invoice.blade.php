@@ -222,7 +222,8 @@
         @endforeach
 
         <!-- Neu: Gutschein 20%-->
-        @if ($user->voucher != '' && $user->voucher == 'HOCHZEITCLICK15' . $YEAR)
+{{--        @if ($user->voucher != '' && $user->voucher == 'HOCHZEITCLICK15' . $YEAR)--}}
+        @if ($user->voucher != '' && $user->voucher == '15HOCHZEITCLICK' . $YEAR)
             @php
                 $rabatt = round($netto * 0.15, 2);
             @endphp
@@ -236,7 +237,6 @@
                 </td>
             </tr>
             @php
-
                 $netto = $netto - $rabatt;
             @endphp
         @else
@@ -285,6 +285,7 @@
 
     <div>
         Bitte verwenden Sie die obengenannte Rechnungsnummer plus Namen als Verwendungszweck.
+        <br>
         <b>Beispiel: AWA-2025-123 Max Mustermann</b><br>
 
         <b>Herzliche Grüße</b><br>
