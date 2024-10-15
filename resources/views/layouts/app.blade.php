@@ -151,6 +151,10 @@
 
 
 
+
+
+
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -340,27 +344,9 @@ if (!isset($access_token)) {
             uploadVideoFlag = true;
         }
 
-        $('form').on("submit", function (e) {
-            console.log('uploadVideoFlag', uploadVideoFlag)
-            if (uploadVideoFlag && $("#youtube").prop('required')) {
-                console.log('if')
-                e.preventDefault();
-                $(".load-overlay").css('display', 'flex');
-                uploadFile();
-            } else {
-                console.log('else')
-                console.log('test else')
-                if (!$("#youtube").prop('required')) {
-                    // If youtube is not required, clear its value
-                    $("#youtube").val('');
-                }
-                $('form').off('submit').submit(); // Release form submission
-            }
-        });
-
         // $('form').on("submit", function (e) {
         //     console.log('uploadVideoFlag', uploadVideoFlag)
-        //     if (uploadVideoFlag) {
+        //     if (uploadVideoFlag && $("#youtube").prop('required')) {
         //         console.log('if')
         //         e.preventDefault();
         //         $(".load-overlay").css('display', 'flex');
@@ -368,14 +354,38 @@ if (!isset($access_token)) {
         //     } else {
         //         console.log('else')
         //         console.log('test else')
-        //         $("#youtube").val('');
-        //         $("#youtube").removeAttr('required');
-        //
-        //         $('form').off('submit').submit(); // Release
+        //         if (!$("#youtube").prop('required')) {
+        //             // If youtube is not required, clear its value
+        //             $("#youtube").val('');
+        //         }
+        //         $('form').off('submit').submit(); // Release form submission
         //     }
         // });
 
+        $('form').on("submit", function (e) {
+            console.log('uploadVideoFlag', uploadVideoFlag)
+            if (uploadVideoFlag) {
+                console.log('if')
+                e.preventDefault();
+                $(".load-overlay").css('display', 'flex');
+                uploadFile();
+            } else {
+                console.log('else')
+                console.log('test else')
+                $("#youtube").val('');
+                $("#youtube").removeAttr('required');
+
+                $('form').off('submit').submit(); // Release
+            }
+        });
+
         function uploadFile() {
+            if ($("#youtube").prop('required') && $("#youtube").val() == '') {
+                alert('Please choose a file to upload');
+                return;
+            } else {
+                $('form').off('submit').submit();
+            }
 
             const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
             var ACCESS_TOKEN = '{{ $access_token }}';
