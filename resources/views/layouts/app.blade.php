@@ -388,8 +388,8 @@ if (!isset($access_token)) {
             });
             var fileInput = document.getElementById('youtube');
             if (!fileInput.files.length && !$("#youtube").prop('required')) {
-                $("button[type=submit]").trigger('click')
-                // alert('Please choose a file to upload');
+                alert('Please choose a file to upload');
+                // $("button[type=submit]").trigger('click')
                 return;
             }
             var file = fileInput.files[0];
@@ -407,7 +407,7 @@ if (!isset($access_token)) {
                         console.log('response11111111', response);
                         uploadVideoFlag = false;
                         $("#uploaded-youtube-file-name").val(dPath);
-                        $("button[type=submit]").trigger('click'); // Release
+                        // $("button[type=submit]").trigger('click'); // Release
                     })
                     .catch(function (error) {
                         console.error(error);
@@ -476,7 +476,7 @@ if (!isset($access_token)) {
                     console.log("dPath", dPath)
                     uploadVideoFlag = false;
                     $("#uploaded-youtube-file-name").val(dPath);
-                    $("button[type=submit]").trigger('click'); // Release
+                    // $("button[type=submit]").trigger('click'); // Release
 
                 }).catch(function (error) {
                     console.error(error);
