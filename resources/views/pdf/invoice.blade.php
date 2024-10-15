@@ -201,6 +201,7 @@
                     &euro; {{ $price }}
                 </td>
             </tr>
+{{--            $project->free==0--}}
             @if ($project->service == 1)
                 <tr>
                     <td></td>
