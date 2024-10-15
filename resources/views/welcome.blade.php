@@ -92,8 +92,10 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-                minutes + "m " + seconds + "s ";
+            if (document.getElementById("demo")) {
+                document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
+                    minutes + "m " + seconds + "s ";
+            }
 
             // If the count down is finished, write some text
             if (distance < 0) {
@@ -121,22 +123,22 @@
     <div class="content">
         <div class="title m-b-md">
             Austrian Wedding Award {{ \Carbon\Carbon::now()->addYear(1)->year }}
-            </div>
-            <br>
-            <h4>Die Einreichungen zum Austrian Wedding Award sind kostenpflichtig!</h4><br><br>
-            <div class="home-msg">
-                Die Kosten für die erste Einreichung beträgt <strong> € 120,- inkl. Ust.</strong><br>
-                Darauffolgende Einreichungen kosten <strong>€ 48,- inkl. Ust.</strong><br><br>
-                Wir weisen darauf hin, dass alle Projekte, die bis 15. November {{ \Carbon\Carbon::now()->year }}<br>
-                hochgeladen werden, auch verrechnet werden.<br><br>
-                Für eine Bearbeitungsgebühr von <strong>€ 18,- inkl. Ust.</strong> kümmern<br>
-                wir uns um deinen Upload.<br>
-                {{-- Alle Details findest du hier >> <a
-                    href="https://austrianweddingaward.at/einreichung-beim-austrian-wedding-award/#">Teilnahmebedingungen</a><br> --}}
+        </div>
+        <br>
+        <h4>Die Einreichungen zum Austrian Wedding Award sind kostenpflichtig!</h4><br><br>
+        <div class="home-msg">
+            Die Kosten für die erste Einreichung beträgt <strong> € 120,- inkl. Ust.</strong><br>
+            Darauffolgende Einreichungen kosten <strong>€ 48,- inkl. Ust.</strong><br><br>
+            Wir weisen darauf hin, dass alle Projekte, die bis 15. November {{ \Carbon\Carbon::now()->year }}<br>
+            hochgeladen werden, auch verrechnet werden.<br><br>
+            Für eine Bearbeitungsgebühr von <strong>€ 18,- inkl. Ust.</strong> kümmern<br>
+            wir uns um deinen Upload.<br>
+            {{-- Alle Details findest du hier >> <a
+                href="https://austrianweddingaward.at/einreichung-beim-austrian-wedding-award/#">Teilnahmebedingungen</a><br> --}}
 
-            </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
