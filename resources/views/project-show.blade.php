@@ -279,7 +279,7 @@
                                     <br>
 
 
-                                    @if ($project->youtube != '')
+                                    @if ($project->youtube)
                                         <!-- <h1>Loading5....</h1> -->
                                         <h3><a href="{{$project->youtube}}" class="btn btn-primary">View Video</a></h3>
                                         <!-- dropbox -->
@@ -292,14 +292,14 @@
                                                                     title="Wedding Award Germany"></iframe></div>
                                                             <script src="https://player.vimeo.com/api/player.js"></script> -->
                                     @endif
-                                    @if ($project->beschreibung != '')
+                                    @if ($project->beschreibung)
                                         <div class="form-group">
                                             <label for="comment">Projektinfos:</label>
                                             <textarea class="form-control" rows="5" id="comment" readonly>{{ $project->beschreibung }}
                 </textarea>
                                         </div>
                                     @endif
-                                    @if ($project->testimonial != '')
+                                    @if ($project->testimonial)
                                         <br>
                                         <div class="form-group">
                                             <label for="comment">Referenzen: </label>

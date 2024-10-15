@@ -1577,7 +1577,6 @@ class ProjectController extends Controller
                 $cat_ids[$cat_id][$project_id] += $vote->counts;
             }
         }
-        dd($projects);
         // new ends
         return view('project-show', compact('projects', 'user', 'cat_ids'));
     }
