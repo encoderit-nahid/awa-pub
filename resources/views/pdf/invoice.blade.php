@@ -288,8 +288,8 @@
         <br>
         <b>Beispiel: AWA-2025-123 Max Mustermann</b><br>
 
-        <b>Herzliche Grüße</b><br>
-        <b>Susanne Hummel & das AWA Team</b><br>
+{{--        <b>Herzliche Grüße</b><br>--}}
+{{--        <b>Susanne Hummel & das AWA Team</b><br>--}}
     </div>
     <br>
     <br>
