@@ -53,7 +53,7 @@
 
     <!-- Video -->
     <div class="form-group row">
-        <label for="youtube" class="col-md-4 col-form-label text-md-right">{{ __('Video*') }}</label>
+        <label for="youtube" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
 
         <div class="col-md-6">
             <input id="youtube" type="file" class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}" name="youtube" value="{{ old('youtube') }}" accept="video/mp4,video/x-m4v,video/*">
