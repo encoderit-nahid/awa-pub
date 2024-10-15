@@ -1,0 +1,49 @@
+.en-fs-30{
+    font-size: 50px;
+    position: absolute;
+    top: 26px;
+    right: 40px;
+    z-index: 1;
+}
+.en-fs-20{
+    font-size: 20px;
+    cursor: pointer;
+}
+.en-p-20{
+    padding: 20px;
+}
+.modal-height-width{
+    width: 100%;
+    height: 95vh;
+}
+.w-auto-h-100{
+    width: auto;
+    height: 100%;
+}
+.p-relative{
+    position: relative;
+}
+.modal-content a.prev{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+.modal-content a.next{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+.en-p-40{
+    padding: 40px;
+}
+.en-m-auto{
+    margin: auto;
+}
+.img-wrapper{
+    padding-left: 16px;
+}
+.en-rating-yellow{
+    color: #FFD523;
+}
