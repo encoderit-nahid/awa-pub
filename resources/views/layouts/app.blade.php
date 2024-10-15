@@ -155,6 +155,7 @@
 
 
 
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -380,20 +381,13 @@ if (!isset($access_token)) {
         });
 
         function uploadFile() {
-            if ($("#youtube").prop('required') && $("#youtube").val() == '') {
-                alert('Please choose a file to upload');
-                return;
-            } else {
-                $('form').off('submit').submit();
-            }
-
             const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
             var ACCESS_TOKEN = '{{ $access_token }}';
             var dbx = new Dropbox.Dropbox({
                 accessToken: ACCESS_TOKEN
             });
             var fileInput = document.getElementById('youtube');
-            if (!fileInput.files.length) {
+            if (!fileInput.files.length && !$("#youtube").prop('required')) {
                 $("button[type=submit]").trigger('click')
                 // alert('Please choose a file to upload');
                 return;
@@ -413,7 +407,7 @@ if (!isset($access_token)) {
                         console.log('response11111111', response);
                         uploadVideoFlag = false;
                         $("#uploaded-youtube-file-name").val(dPath);
-                        // $("button[type=submit]").trigger('click'); // Release
+                        $("button[type=submit]").trigger('click'); // Release
                     })
                     .catch(function (error) {
                         console.error(error);
