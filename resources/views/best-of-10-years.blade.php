@@ -60,7 +60,7 @@
                    name="youtube"
                    value="{{ old('youtube') }}"
                    accept="video/mp4,video/x-m4v,video/*"
-                   max-duration="4"
+                   max-duration="2"
             >
             <input type="hidden" id="uploaded-youtube-file-name" name="uploaded_youtube_file_name">
             @if ($errors->has('youtube'))
