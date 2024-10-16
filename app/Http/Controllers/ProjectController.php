@@ -538,6 +538,7 @@ class ProjectController extends Controller
     public function user_delete($id)
     {
         $user = User::find($id);
+        Project::where('user_id', $id)->delete();
         $user->delete();
         return redirect()->route('change-user-status');
     }
