@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +10,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use LogsActivity, Notifiable;
+    use LogsActivity, Notifiable, SoftDeletes;
 
     protected $table = 'users';
     protected $primaryKey = 'id';
