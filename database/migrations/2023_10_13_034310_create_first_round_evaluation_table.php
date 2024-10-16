@@ -20,6 +20,7 @@ class CreateFirstRoundEvaluationTable extends Migration
             $table->integer('project_id')->unsigned();
             $table->integer('status')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('first_round_evaluation', function($table) {

@@ -11,8 +11,8 @@ class User extends Authenticatable
 {
     use LogsActivity, Notifiable;
 
-      protected $table = 'users';
-      protected $primaryKey = 'id';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','vorname','firma','anr','agb','newsletter','datenschutz', 'voucher', 'instagram', 'teilnahmebedingung',
+        'name', 'email', 'password', 'vorname', 'firma', 'anr', 'agb', 'newsletter', 'datenschutz', 'voucher', 'instagram', 'teilnahmebedingung',
     ];
     protected static $logAttributes = [
         'name', 'email'
@@ -36,10 +36,13 @@ class User extends Authenticatable
     ];
 
 
-
     public function projects()
-      {
-          return $this->hasMany(\App\Project::class, 'user_id');
-      }
+    {
+        return $this->hasMany(\App\Project::class, 'user_id');
+    }
 
+    public function firstRoundEvaluation()
+    {
+        return $this->hasMany(\App\FirstRoundEvaluation::class, 'jury_id');
+    }
 }
