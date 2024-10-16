@@ -426,6 +426,9 @@ if (!isset($access_token)) {
                     }
                 }
                 video.src = URL.createObjectURL(fileInput.files[0]);
+
+                console.log('video.duration', video.duration)
+                console.log('maxDuration', maxDuration)
                 if (!inLimit) {
                     $(".load-overlay").css('display', 'none');
                     alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
