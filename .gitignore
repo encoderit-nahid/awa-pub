@@ -1,15 +1,15 @@
 .idea
 .idea/
-#/node_modules
-#
+/node_modules
+
 /public/images
 /public/profile_images
 #/public/js
 #/public/css
-#/public/storage
+/public/storage
 #/public/*.js
 #/public/mix-manifest.json
-#
+
 #/storage/*.key
 ## /vendor
 .env
@@ -17,8 +17,8 @@
 #.phpunit.result.cache
 #Homestead.json
 #Homestead.yaml
-#npm-debug.log
-#yarn-error.log
+npm-debug.log
+yarn-error.log
 /.vscode
-#/.scribe
+/.scribe
 /**/*.zip
