@@ -404,11 +404,6 @@ if (!isset($access_token)) {
         });
 
         function uploadFile() {
-            const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
-            var ACCESS_TOKEN = '{{ $access_token }}';
-            var dbx = new Dropbox.Dropbox({
-                accessToken: ACCESS_TOKEN
-            });
             var fileInput = document.getElementById('youtube');
             // if (!fileInput.files.length && !$("#youtube").prop('required')) {
             //     // alert('Please choose a file to upload');
@@ -446,6 +441,12 @@ if (!isset($access_token)) {
         }
 
         function uploadToDropBox() {
+            const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
+            var ACCESS_TOKEN = '{{ $access_token }}';
+            var dbx = new Dropbox.Dropbox({
+                accessToken: ACCESS_TOKEN
+            });
+            var fileInput = document.getElementById('youtube');
             var file = fileInput.files[0];
             var fileExt = file.name.split('.').pop();
             var newFilenameOnly = '{{ uniqid() }}';
