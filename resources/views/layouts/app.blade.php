@@ -170,6 +170,7 @@
 
 
 
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -399,7 +400,7 @@ if (!isset($access_token)) {
             }
         });
 
-        async function uploadFile() {
+        function uploadFile() {
             const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
             var ACCESS_TOKEN = '{{ $access_token }}';
             var dbx = new Dropbox.Dropbox({
@@ -419,7 +420,7 @@ if (!isset($access_token)) {
             if (maxDuration) {
                 const video = document.createElement('video');
                 video.preload = 'metadata';
-                video.onloadedmetadata = await function () {
+                video.onloadedmetadata = function () {
                     window.URL.revokeObjectURL(video.src);
                     console.log('video.duration', video.duration)
                     console.log('maxDuration', maxDuration)
