@@ -421,14 +421,14 @@ if (!isset($access_token)) {
                 video.preload = 'metadata';
                 video.onloadedmetadata = await function () {
                     window.URL.revokeObjectURL(video.src);
+                    console.log('video.duration', video.duration)
+                    console.log('maxDuration', maxDuration)
                     if (maxDuration <= video.duration) {
                         inLimit = true;
                     }
                 }
                 video.src = URL.createObjectURL(fileInput.files[0]);
 
-                console.log('video.duration', video.duration)
-                console.log('maxDuration', maxDuration)
                 if (!inLimit) {
                     $(".load-overlay").css('display', 'none');
                     alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
