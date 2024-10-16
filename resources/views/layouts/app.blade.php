@@ -169,6 +169,7 @@
 
 
 
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
