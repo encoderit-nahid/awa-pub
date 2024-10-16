@@ -422,7 +422,7 @@ if (!isset($access_token)) {
                 video.preload = 'metadata';
                 video.onloadedmetadata = function () {
                     window.URL.revokeObjectURL(video.src);
-                    if (maxDuration <= video.duration) {
+                    if (video.duration < maxDuration) {
                         inLimit = true;
                     }
                     console.log(inLimit)
