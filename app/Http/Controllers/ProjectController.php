@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Log;
 use PDF;
 use File;
@@ -537,10 +537,12 @@ class ProjectController extends Controller
 
     public function user_delete($id)
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         $user = User::find($id);
         $user->firstRoundEvaluation()->delete();
         $user->projects()->delete();
         $user->delete();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         return redirect()->route('change-user-status');
     }
 
