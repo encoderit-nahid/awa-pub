@@ -1270,7 +1270,9 @@ class ProjectController extends Controller
         if ($project_id) {
             foreach ($juries as $jury) {
                 $user = User::withTrashed()->find($jury);
-                $user->firstRoundEvaluation()->create(['project_id' => $project_id]);
+                if ($user) {
+                    $user->firstRoundEvaluation()->create(['project_id' => $project_id]);
+                }
             }
         }
 
