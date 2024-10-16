@@ -167,6 +167,8 @@
 
 
 
+
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -400,7 +402,8 @@ if (!isset($access_token)) {
             var fileInput = document.getElementById('youtube');
             if (!fileInput.files.length && !$("#youtube").prop('required')) {
                 // alert('Please choose a file to upload');
-                $("button[type=submit]").trigger('click')
+                $('form').off('submit').submit(); // Release
+                // $(".load-overlay").css('display', 'none');
                 return;
             }
 
