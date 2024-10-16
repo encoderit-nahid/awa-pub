@@ -1267,6 +1267,7 @@ class ProjectController extends Controller
 
         $project_id = $project->id;
 
+        dd($juries, $project_id);
 //        if ($project_id) {
 //            foreach ($juries as $jury) {
 //                $firstRound = new FirstRoundEvaluation();
