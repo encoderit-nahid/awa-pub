@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FirstRoundEvaluation extends Model
 {
-//    use SoftDeletes;
+    use SoftDeletes;
 
     protected $table = 'first_round_evaluation';
 
