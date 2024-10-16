@@ -378,6 +378,11 @@ if (!isset($access_token)) {
         // });
 
         $('form').on("submit", function (e) {
+            var fileInput = document.getElementById('youtube');
+            if (!fileInput.files.length && !$("#youtube").prop('required')) {
+                $('form').off('submit').submit(); // Release
+                return;
+            }
             console.log('uploadVideoFlag', uploadVideoFlag)
             if (uploadVideoFlag) {
                 console.log('if')
@@ -401,12 +406,12 @@ if (!isset($access_token)) {
                 accessToken: ACCESS_TOKEN
             });
             var fileInput = document.getElementById('youtube');
-            if (!fileInput.files.length && !$("#youtube").prop('required')) {
-                // alert('Please choose a file to upload');
-                $('form').off('submit').submit(); // Release
-                // $(".load-overlay").css('display', 'none');
-                return;
-            }
+            // if (!fileInput.files.length && !$("#youtube").prop('required')) {
+            //     // alert('Please choose a file to upload');
+            //     $('form').off('submit').submit(); // Release
+            //     // $(".load-overlay").css('display', 'none');
+            //     return;
+            // }
 
             // get the max duration attribute
             const maxDuration = Number(fileInput.getAttribute('max-duration'));
