@@ -59,8 +59,8 @@
             <input id="youtube" type="file" class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}"
                    name="youtube"
                    value="{{ old('youtube') }}"
-                   accept="video/mp4,video/x-m4v,video/*"
-                   max-duration="2"
+                   accept="video/mp4,video/x-m4v,video/mkv,video/*"
+                   max-duration="120"
             >
             <input type="hidden" id="uploaded-youtube-file-name" name="uploaded_youtube_file_name">
             @if ($errors->has('youtube'))
@@ -117,7 +117,8 @@
         <label for="check" class="col-md-4 col-form-label text-md-right">{{ __('') }}</label>
 
         <div class="col-md-6">
-            <input type="checkbox" checked="checked" name="check" id="check" value="{{old('check')}}" required><label for="check"><span></span><p>Ich habe das Recht die Fotos zu verwenden!</p></label>
+            <input type="checkbox" checked="checked" name="check" id="check" value="{{old('check')}}" required><label for="check"><span></span>
+                <p>Ich habe das Recht die Fotos zu verwenden!</p></label>
             @if ($errors->has('check'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('check') }}</strong>
@@ -139,8 +140,8 @@
 <script src="https://code.jquery.com/jquery-1.5.js"></script>
 <script>
     var max = {{ $cats->words }};
-    $(document).ready(function() {
-        $("#beschreibung").on('keyup', function() {
+    $(document).ready(function () {
+        $("#beschreibung").on('keyup', function () {
             var words = this.value.match(/\S+/g).length;
 
             if (words > max) {
@@ -148,10 +149,9 @@
                 var trimmed = $(this).val().split(/\s+/, max).join(" ");
                 // Add a space at the end to make sure more typing creates new words
                 $(this).val(trimmed + " ");
-            }
-            else {
+            } else {
                 $('#display_count').text(words);
-                $('#word_left').text(max-words);
+                $('#word_left').text(max - words);
             }
         });
     });
@@ -160,8 +160,8 @@
 <script src="https://code.jquery.com/jquery-1.5.js"></script>
 <script>
     var max = {{ $cats->words }};
-    $(document).ready(function() {
-        $("#testimonial").on('keyup', function() {
+    $(document).ready(function () {
+        $("#testimonial").on('keyup', function () {
             var words = this.value.match(/\S+/g).length;
 
             if (words > max) {
@@ -169,10 +169,9 @@
                 var trimmed = $(this).val().split(/\s+/, max).join(" ");
                 // Add a space at the end to make sure more typing creates new words
                 $(this).val(trimmed + " ");
-            }
-            else {
+            } else {
                 $('#display_count_referenz').text(words);
-                $('#word_left').text(max-words);
+                $('#word_left').text(max - words);
             }
         });
     });

@@ -156,6 +156,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -380,7 +391,7 @@ if (!isset($access_token)) {
             }
         });
 
-        function uploadFile() {
+        async function uploadFile() {
             const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
             var ACCESS_TOKEN = '{{ $access_token }}';
             var dbx = new Dropbox.Dropbox({
@@ -392,27 +403,31 @@ if (!isset($access_token)) {
                 $("button[type=submit]").trigger('click')
                 return;
             }
+
+            // get the max duration attribute
+            const maxDuration = Number(fileInput.getAttribute('max-duration'));
+            let inLimit = false
+            if (maxDuration) {
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                video.onloadedmetadata = await function () {
+                    window.URL.revokeObjectURL(video.src);
+                    if (maxDuration <= video.duration) {
+                        inLimit = true;
+                    }
+                }
+                video.src = URL.createObjectURL(fileInput.files[0]);
+                if (!inLimit) {
+                    $(".load-overlay").css('display', 'none');
+                    alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
+                    return;
+                }
+            }
+
             var file = fileInput.files[0];
             var fileExt = file.name.split('.').pop();
             var newFilenameOnly = '{{ uniqid() }}';
             var dPath = '/' + newFilenameOnly + '.' + fileExt;
-
-            // get the max duration attribute
-            const maxDuration = fileInput.getAttribute('max-duration');
-            if (maxDuration) {
-                const video = document.createElement('video');
-                video.preload = 'metadata';
-                video.onloadedmetadata = function () {
-                    window.URL.revokeObjectURL(video.src);
-                    const duration = video.duration;
-                    if (duration > maxDuration) {
-                        alert('Video duration is more than ' + maxDuration + ' seconds');
-                        return;
-                    }
-                }
-                video.src = URL.createObjectURL(file);
-            }
-
 
             if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
                 dbx.filesUpload({
