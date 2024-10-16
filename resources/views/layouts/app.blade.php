@@ -422,11 +422,12 @@ if (!isset($access_token)) {
                 video.preload = 'metadata';
                 video.onloadedmetadata = function () {
                     window.URL.revokeObjectURL(video.src);
-                    console.log('video.duration', video.duration)
-                    console.log('maxDuration', maxDuration)
                     if (maxDuration <= video.duration) {
                         inLimit = true;
                     }
+                    console.log(inLimit)
+                    console.log('video.duration', video.duration)
+                    console.log('maxDuration', maxDuration)
                 }
                 video.src = URL.createObjectURL(fileInput.files[0]);
 
