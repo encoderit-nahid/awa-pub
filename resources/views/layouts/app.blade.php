@@ -171,6 +171,9 @@
 
 
 
+
+
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -428,16 +431,21 @@ if (!isset($access_token)) {
                     console.log(inLimit)
                     console.log('video.duration', video.duration)
                     console.log('maxDuration', maxDuration)
+
+                    if (!inLimit) {
+                        $(".load-overlay").css('display', 'none');
+                        alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
+                        return;
+                    }
+                    uploadToDropBox();
                 }
                 video.src = URL.createObjectURL(fileInput.files[0]);
-
-                if (!inLimit) {
-                    $(".load-overlay").css('display', 'none');
-                    alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
-                    return;
-                }
+            } else {
+                uploadToDropBox();
             }
+        }
 
+        function uploadToDropBox() {
             var file = fileInput.files[0];
             var fileExt = file.name.split('.').pop();
             var newFilenameOnly = '{{ uniqid() }}';
@@ -530,6 +538,7 @@ if (!isset($access_token)) {
             }
             return false;
         }
+
     });
 </script>
 </body>
