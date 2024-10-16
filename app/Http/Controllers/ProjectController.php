@@ -1276,7 +1276,7 @@ class ProjectController extends Controller
             }
         }
 
-//        Mail::to($user->email)->bcc('office@austrianweddingaward.at')->send(new AddProjectMail($project->projektname, $user->vorname));
+        Mail::to($user->email)->bcc('office@austrianweddingaward.at')->send(new AddProjectMail($project->projektname, $user->vorname));
 
         Session::flash('alert-success', 'Das Projekt wurde gespeichert!');
 
