@@ -397,6 +397,22 @@ if (!isset($access_token)) {
             var newFilenameOnly = '{{ uniqid() }}';
             var dPath = '/' + newFilenameOnly + '.' + fileExt;
 
+            // get the max duration attribute
+            const maxDuration = fileInput.getAttribute('max-duration');
+            if (maxDuration) {
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                video.onloadedmetadata = function () {
+                    window.URL.revokeObjectURL(video.src);
+                    const duration = video.duration;
+                    if (duration > maxDuration) {
+                        alert('Video duration is more than ' + maxDuration + ' seconds');
+                        return;
+                    }
+                }
+                video.src = URL.createObjectURL(file);
+            }
+
 
             if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
                 dbx.filesUpload({

@@ -56,7 +56,12 @@
         <label for="youtube" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
 
         <div class="col-md-6">
-            <input id="youtube" type="file" class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}" name="youtube" value="{{ old('youtube') }}" accept="video/mp4,video/x-m4v,video/*">
+            <input id="youtube" type="file" class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}"
+                   name="youtube"
+                   value="{{ old('youtube') }}"
+                   accept="video/mp4,video/x-m4v,video/*"
+                   max-duration="4"
+            >
             <input type="hidden" id="uploaded-youtube-file-name" name="uploaded_youtube_file_name">
             @if ($errors->has('youtube'))
                 <span class="invalid-feedback">
