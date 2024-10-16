@@ -1267,11 +1267,13 @@ class ProjectController extends Controller
 
         $project_id = $project->id;
 
-        foreach ($juries as $jury) {
-            $firstRound = new FirstRoundEvaluation();
-            $firstRound->jury_id = $jury;
-            $firstRound->project_id = $project_id;
-            $firstRound->save();
+        if ($project_id) {
+            foreach ($juries as $jury) {
+                $firstRound = new FirstRoundEvaluation();
+                $firstRound->jury_id = $jury;
+                $firstRound->project_id = $project_id;
+                $firstRound->save();
+            }
         }
 
         Mail::to($user->email)->bcc('office@austrianweddingaward.at')->send(new AddProjectMail($project->projektname, $user->vorname));
