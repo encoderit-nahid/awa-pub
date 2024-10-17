@@ -127,7 +127,7 @@ class UserSeeder extends Seeder
         foreach ($userGroups as $categoryName => $userEmails) {
             $category = \App\Cat::where('name', $categoryName)->first();
             if ($category) {
-                \App\User::whereIn('email', $userEmails)->get()->each(function ($user) use ($category) {
+                \App\User::whereIn('email', $userEmails)->withTrashed()->get()->each(function ($user) use ($category) {
                     \App\JuryCategoryPermission::firstOrCreate([
                         'cat_id' => $category->id,
                         'user_id' => $user->id,
