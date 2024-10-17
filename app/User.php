@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\FirstRoundEvaluation::class, 'jury_id');
     }
+
+    public function juryCategoryPermission()
+    {
+        return $this->hasMany(\App\JuryCategoryPermission::class, 'user_id');
+    }
 }

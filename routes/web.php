@@ -255,6 +255,11 @@ Route::get('/all-clear', function () {
 //    }
 //});
 
+Route::get('/jury-x-category', function () {
+    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->get();
+    return view('developer.jury-x-category', compact('categories'));
+});
+
 Route::delete('/delete-category/{id}', function ($id) {
     $cat = \App\Cat::findOrFail($id);
     $cat->delete();

@@ -24,4 +24,14 @@ class Cat extends Model
         return $this->hasMany('App\Project');
     }
 
+    public function juryCategoryPermission()
+    {
+        return $this->hasMany(\App\JuryCategoryPermission::class, 'cat_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class, 'user_id');
+    }
+
 }
