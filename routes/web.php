@@ -256,7 +256,7 @@ Route::get('/all-clear', function () {
 //});
 
 Route::get('/jury-x-category', function () {
-    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->orderBy('name')->get();
+    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->orderBy('name', 'ASC')->get();
     return view('developer.jury-x-category', compact('categories'));
 });
 
