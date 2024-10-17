@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TestSeeder extends Seeder
+class JuryXCatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
