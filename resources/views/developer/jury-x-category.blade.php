@@ -14,11 +14,13 @@
                                 <h3>Assigned Users</h3>
                                 <ul>
                                     @forelse($category->juryCategoryPermission as $jury_category_permission)
-                                        <li>
-                                            <h4>
-                                                {{$jury_category_permission->user->name}} - {{$jury_category_permission->user->email}}
-                                            </h4>
-                                        </li>
+                                        @if($jury_category_permission->user)
+                                            <li>
+                                                <h4>
+                                                    {{$jury_category_permission->user->name}} - {{$jury_category_permission->user->email}}
+                                                </h4>
+                                            </li>
+                                        @endif
                                     @empty
                                         <li class="text-danger">No users assigned</li>
                                     @endforelse
