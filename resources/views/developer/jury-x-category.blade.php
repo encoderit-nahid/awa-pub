@@ -8,7 +8,7 @@
                     <div class="col-12 col-md-6">
                         <div class="card rounded mb-4">
                             <div class="card-header">
-                                <h2>{{$category->name}}</h2>
+                                <h2>{{ $category->id }} -- {{$category->name}}</h2>
                             </div>
                             <div class="card-body">
                                 <h3>Assigned Users</h3>
@@ -17,7 +17,7 @@
                                         @if($jury_category_permission->user)
                                             <li>
                                                 <h4>
-                                                    {{$jury_category_permission->user->name}} - {{$jury_category_permission->user->email}}
+                                                   {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
                                                 </h4>
                                             </li>
                                         @endif

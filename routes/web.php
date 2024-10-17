@@ -263,7 +263,6 @@ Route::get('/jury-x-category', function () {
 Route::delete('/delete-category/{id}', function ($id) {
     $cat = \App\Cat::findOrFail($id);
     $cat->delete();
-
     return redirect()->back()->with('success', 'Category deleted successfully');
 })->name('delete-category');
 
