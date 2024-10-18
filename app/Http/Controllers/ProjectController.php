@@ -2323,9 +2323,9 @@ class ProjectController extends Controller
         $user = Auth::user();
         $all_cats = Cat::orderBy('name')->pluck('name', 'id');
 
-        dd(Project::where('stat', '=', '0')
-            ->where('is_selected_for_first_evaluation', '=', false)
-            ->with('images')->get()->pluck('projektname')->toArray());
+//        dd(Project::where('stat', '=', '0')
+//            ->where('is_selected_for_first_evaluation', '=', false)
+//            ->with('images')->get()->pluck('projektname')->toArray());
         $keyword = $request->get('search', '');
         if ($keyword) {
             /*search in user model*/
@@ -2384,7 +2384,9 @@ class ProjectController extends Controller
 
         $user_array = [];
         foreach ($projects as $project) {
-            array_push($user_array, $project->user_id);
+            if ($project->user_id) {
+                $user_array[] = $project->user_id;
+            }
         }
         $users = User::whereIn('id', $user_array)->get()->keyBy('id')->toArray();
 
@@ -2415,7 +2417,8 @@ class ProjectController extends Controller
                 'projects' => view('ajax-load-admin')->with(compact('projects', 'user', 'all_cats', 'cat_id', 'do_work', 'users'))->render(),
                 'next_page' => $projects->nextPageUrl()
             ];
-        } else {
+        }
+        else {
             $count = Project::where('stat', '=', '0')
                 ->where('is_selected_for_first_evaluation', '=', false)
                 ->with('images');
