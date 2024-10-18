@@ -276,8 +276,6 @@
 
                                 <div style="height: 50px;"></div>
                             @endforeach
-
-                            {{ $projects->links() }}
                         </section>
                         <div class="ajax-load text-center" style="display:none">
                             <p><img src="{{asset('images/loading.gif')}}">Loading More Post</p>
