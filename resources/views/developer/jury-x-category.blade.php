@@ -42,9 +42,9 @@
                                                     <h4>
                                                         {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
                                                     </h4>
-                                                    <div>
-                                                        <strong>Projects:</strong>
-                                                    </div>
+{{--                                                    <div>--}}
+{{--                                                        <strong>Projects:</strong>--}}
+{{--                                                    </div>--}}
                                                     <ul>
                                                         @forelse($jury_category_permission->user->projects as $project)
                                                             <li>
