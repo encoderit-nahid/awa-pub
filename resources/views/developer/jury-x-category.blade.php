@@ -16,24 +16,24 @@
                                     <h2>{{ $category->id }} -- {{$category->name}}</h2>
                                 </div>
                                 <div class="card-body">
-                                    <h3>Assigned Users</h3>
+                                    <h3>Assigned Users:</h3>
                                     <input type="hidden" name="category_id" value="{{$category->id}}">
-                                    <select
-                                            class="selectpicker"
-                                            multiple
-                                            data-live-search="true"
-                                            style="width: 100%; font-size: 16px!important;"
-                                            name="users[{{$category->id}}][]"
-                                    >
-                                        @foreach($users as $user)
-                                            <option
-                                                    value="{{$user->id}}"
-                                                    @if($category->juryCategoryPermission->contains('user_id', $user->id)) selected @endif
-                                            >
-                                                {{$user->name}} : {{$user->email}}
-                                            </option>
-                                        @endforeach
-                                    </select>
+{{--                                    <select--}}
+{{--                                            class="selectpicker"--}}
+{{--                                            multiple--}}
+{{--                                            data-live-search="true"--}}
+{{--                                            style="width: 100%; font-size: 16px!important;"--}}
+{{--                                            name="users[{{$category->id}}][]"--}}
+{{--                                    >--}}
+{{--                                        @foreach($users as $user)--}}
+{{--                                            <option--}}
+{{--                                                    value="{{$user->id}}"--}}
+{{--                                                    @if($category->juryCategoryPermission->contains('user_id', $user->id)) selected @endif--}}
+{{--                                            >--}}
+{{--                                                {{$user->name}} : {{$user->email}}--}}
+{{--                                            </option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
 
                                     <ul>
                                         @forelse($category->juryCategoryPermission as $jury_category_permission)
@@ -42,6 +42,7 @@
                                                     <h4>
                                                         {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
                                                     </h4>
+                                                    <h3>Projects:</h3>
                                                     <ul>
                                                         @forelse($jury_category_permission->user->projects as $project)
                                                             <li>
