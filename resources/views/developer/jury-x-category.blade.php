@@ -46,7 +46,7 @@
                                                         @forelse($jury_category_permission->user->projects as $project)
                                                             <li>
                                                                 <h5>
-                                                                    {{$project->id}} -- {{$project->name}}
+                                                                    {{$project->id}} -- {{$project->projektname}}
                                                                 </h5>
                                                             </li>
                                                         @empty
