@@ -2,13 +2,13 @@
 
 @section('content')
     @php
-//        $users = \App\User::whereIn('rolle', [0, 9])->get();
-        $users = \App\User::get();
+        //        $users = \App\User::whereIn('rolle', [0, 9])->get();
+                $users = \App\User::get();
     @endphp
     <div class="container-fluid">
         <form action="">
             <div class="row">
-                @foreach($categories as $category)
+                @foreach($categories as $key => $category)
                     @if($category->name)
                         <div class="col-12 col-md-6">
                             <div class="card rounded mb-4">
@@ -17,8 +17,14 @@
                                 </div>
                                 <div class="card-body">
                                     <h3>Assigned Users</h3>
-
-                                    <select class="selectpicker" multiple data-live-search="true" style="width: 100%; font-size: 16px!important;">
+                                    <input type="hidden" name="category_id" value="{{$category->id}}">
+                                    <select
+                                            class="selectpicker"
+                                            multiple
+                                            data-live-search="true"
+                                            style="width: 100%; font-size: 16px!important;"
+                                            name="users[{{$category->id}}][]"
+                                    >
                                         @foreach($users as $user)
                                             <option
                                                     value="{{$user->id}}"
