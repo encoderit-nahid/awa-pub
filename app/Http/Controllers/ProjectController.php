@@ -2427,11 +2427,7 @@ class ProjectController extends Controller
                 $do_work = 1;
             }
         }
-        $projects = Project::where('stat', '=', '0')
-            ->where('is_selected_for_first_evaluation', '=', false)
-            ->with('images')
-            ->paginate(100);
-        dd($projects);
+//        dd($projects);
         return view('project-show-admin', compact('projects', 'user', 'all_cats', 'cat_id', 'do_work', 'users', 'keyword'));
     }
 
