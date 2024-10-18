@@ -2323,6 +2323,9 @@ class ProjectController extends Controller
         $user = Auth::user();
         $all_cats = Cat::orderBy('name')->pluck('name', 'id');
 
+        dd(Project::where('stat', '=', '0')
+            ->where('is_selected_for_first_evaluation', '=', false)
+            ->with('images')->get());
         $keyword = $request->get('search', '');
         if ($keyword) {
             /*search in user model*/
