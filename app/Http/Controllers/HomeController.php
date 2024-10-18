@@ -9,7 +9,7 @@ use App\User;
 use App\Project;
 use App\Award;
 use App\Badge;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -26,7 +26,7 @@ class HomeController extends Controller
   /**
    * Show the application dashboard.
    *
-   * @return \Illuminate\Http\Response
+   * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
    */
   public function index()
   {
