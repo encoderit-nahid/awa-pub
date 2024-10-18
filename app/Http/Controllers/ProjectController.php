@@ -2378,7 +2378,7 @@ class ProjectController extends Controller
                     ->where('is_selected_for_first_evaluation', '=', false)
                     ->where('cat_id', $cat_id)
                     ->with('images')
-                    ->paginate(5);
+                    ->paginate(100);
             }
             info('noKeyword');
             info($projects);
