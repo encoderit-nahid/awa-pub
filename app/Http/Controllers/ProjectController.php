@@ -2325,7 +2325,7 @@ class ProjectController extends Controller
 
         dd(Project::where('stat', '=', '0')
             ->where('is_selected_for_first_evaluation', '=', false)
-            ->with('images')->get()->pluck('name')->toArray());
+            ->with('images')->get()->pluck('projektname')->toArray());
         $keyword = $request->get('search', '');
         if ($keyword) {
             /*search in user model*/
