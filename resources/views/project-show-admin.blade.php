@@ -40,7 +40,7 @@
                                 <form action="{{ $cat_id == null ? url('/project-freigeben') : url('/project-freigeben').'/'.$cat_id}}">
                                     @csrf
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{ old('search', $keyword) }}">
+                                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" name="search" value="{{ old('search', $keyword ?? '') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-outline-secondary" type="button">Search</button>
                                         </div>
@@ -353,8 +353,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script type="text/javascript">
-
-
         $(document).ready(function () {
             var host = window.location.origin;
             var token = $('input[name="ajax_token"]').val();
@@ -375,11 +373,11 @@
 
                         if (scroll_position_for_tickets_load >= $(document).height()) {
                             const urlParams = new URLSearchParams(window.location.search);
-                            const keyword = urlParams.get('search');
+                            const keyword = urlParams.get('search') ?? '';
                             var pageLink = page.replace(host, '');
                             console.log(pageLink);
-                            if (keyword != '') {
-                                pageLink += '&search=' + keyword;
+                            if (keyword) {
+                                pageLink += '&search=' + keyword ?? '';
                             }
                             console.log(keyword);
                             console.log(pageLink);
@@ -387,9 +385,9 @@
                                 $('.ajax-load').hide();
                                 $('.projects').append(data.projects);
                                 var nextPage = data.next_page;
-                                $('.endless-pagination').data('next-page', data.next_page);
-                                page = data.next_page;
-                                console.log(data.next_page);
+                                $('.endless-pagination').data('next-page', nextPage);
+                                page = nextPage;
+                                console.log(nextPage);
                             });
                         }
                     }, 1000))
