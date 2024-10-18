@@ -2355,31 +2355,25 @@ class ProjectController extends Controller
             /*combine 2 array*/
             $project_ids = array_unique(array_merge($get_project_by_searched_user, $project_with_search));
 
-            if ($cat_id == null) {
-                $projects = Project::whereIn('id', $project_ids)
-                    ->with('images')
-                    ->paginate(5);
-            } else {
-                $projects = Project::whereIn('id', $project_ids)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->paginate(5);
+            $projects = Project::whereIn('id', $project_ids)
+                ->with('images');
+            if ($cat_id) {
+                $projects->where('cat_id', $cat_id);
             }
+            $projects = $projects->paginate(5);
+
             info('keyword');
             info($projects);
         } else {
-            if ($cat_id == null) {
-                $projects = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->with('images')
-                    ->paginate(5);
-            } else {
-                $projects = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->paginate(100);
+            $projects = Project::where('stat', '=', '0')
+                ->where('is_selected_for_first_evaluation', '=', false)
+                ->with('images');
+
+            if ($cat_id) {
+                $projects->where('cat_id', $cat_id);
             }
+            $projects = $projects->paginate(5);
+
             info('noKeyword');
             info($projects);
         }
@@ -2393,19 +2387,13 @@ class ProjectController extends Controller
 
 
         if ($request->ajax()) {
-
-            if ($cat_id == null) {
-                $count = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->with('images')
-                    ->count();
-            } else {
-                $count = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->where('cat_id', '=', $cat_id)
-                    ->with('images')
-                    ->count();
+            $count = Project::where('stat', '=', '0')
+                ->where('is_selected_for_first_evaluation', '=', false)
+                ->with('images');
+            if ($cat_id) {
+                $count->where('cat_id', $cat_id);
             }
+            $count = $count->count();
 
 
             $user_array = [];
@@ -2425,20 +2413,13 @@ class ProjectController extends Controller
                 'next_page' => $projects->nextPageUrl()
             ];
         } else {
-
-            if ($cat_id == null) {
-                $count = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->with('images')
-                    ->count();
-            } else {
-                $count = Project::where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', false)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->count();
+            $count = Project::where('stat', '=', '0')
+                ->where('is_selected_for_first_evaluation', '=', false)
+                ->with('images');
+            if ($cat_id) {
+                $count->where('cat_id', $cat_id);
             }
-
+            $count = $count->count();
 
             if (ceil($count) <= 5) {
                 $do_work = 0;
