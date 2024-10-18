@@ -2431,6 +2431,7 @@ class ProjectController extends Controller
             ->where('is_selected_for_first_evaluation', '=', false)
             ->with('images')
             ->paginate(100);
+        dd($projects);
         return view('project-show-admin', compact('projects', 'user', 'all_cats', 'cat_id', 'do_work', 'users', 'keyword'));
     }
 
