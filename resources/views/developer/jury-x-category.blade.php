@@ -17,8 +17,19 @@
                                         @if($jury_category_permission->user)
                                             <li>
                                                 <h4>
-                                                   {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
+                                                    {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
                                                 </h4>
+                                                <ul>
+                                                    @forelse($jury_category_permission->user->projects as $project)
+                                                        <li>
+                                                            <h5>
+                                                                {{$project->id}} -- {{$project->name}}
+                                                            </h5>
+                                                        </li>
+                                                    @empty
+                                                        <li class="text-danger">No projects assigned</li>
+                                                    @endforelse
+                                                </ul>
                                             </li>
                                         @endif
                                     @empty
