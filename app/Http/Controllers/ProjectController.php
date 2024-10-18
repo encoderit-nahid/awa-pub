@@ -2323,8 +2323,8 @@ class ProjectController extends Controller
         $user = Auth::user();
         $all_cats = Cat::orderBy('name')->pluck('name', 'id');
 
-        $keyword = $request->get('search');
-        if (!empty($keyword)) {
+        $keyword = $request->get('search', '');
+        if ($keyword) {
             /*search in user model*/
             $searched_user = User::where('email', $request->get('search'))
                 ->orWhere('vorname', $request->get('search'))
