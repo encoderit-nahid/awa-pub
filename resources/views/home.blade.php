@@ -224,16 +224,16 @@
                                     @endif
                                 @elseif ($user->rolle == 9)
                                     <!-- Nahid -->
-                                    {{--                                    <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>--}}
+                                    <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
                                     <!-- End Nahid -->
                                 @endif
                             </div>
                         @endif
 
                         <!-- Nahid -->
-                        <div>
-                            <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
-                        </div>
+                        {{--                        <div>--}}
+                        {{--                            <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>--}}
+                        {{--                        </div>--}}
                         <!-- End Nahid -->
 
                         <!-- Rejected Projects table data  -->
