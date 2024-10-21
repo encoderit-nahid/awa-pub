@@ -224,7 +224,7 @@
                                 @endif
                             </div>
                         @endif
-
+                            <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
                         <!-- Rejected Projects table data  -->
                         </br></br>
                         @if (count($projects) > 0)
