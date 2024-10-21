@@ -9,12 +9,14 @@ class DeveloperController extends Controller
 {
     public function jujuryXCategory()
     {
+        abort_if(auth()->user()->rolle != 9, 403);
         $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->orderBy('name', 'ASC')->get();
         return view('developer.jury-x-category', compact('categories'));
     }
 
     public function getJuriesByCategory()
     {
+        abort_if(auth()->user()->rolle != 9, 403);
         $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])
             ->orderBy('name', 'ASC')->get();
         $juries = \App\User::whereIn('rolle', ['1', 1])->get();
