@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeveloperController;
 use Dcblogdev\Dropbox\Dropbox;
 
 use Illuminate\Contracts\View\View;
@@ -255,21 +256,9 @@ Route::get('/all-clear', function () {
 //    }
 //});
 
-Route::get('/jury-x-category', function () {
-    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->orderBy('name', 'ASC')->get();
-    return view('developer.jury-x-category', compact('categories'));
-});
-
-Route::get('/developer/assign-jury-category', function () {
-    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])
-        ->orderBy('name', 'ASC')->get();
-    $juries = \App\User::where('rolle', 1)->get();
-    return view('developer.assign-jury-category', compact('categories', 'juries'));
-});
-
-Route::post('/developer/assign-jury-category', function () {
-    return view('developer.assign-jury-category');
-})->name('assign-jury-category');
+Route::get('/jury-x-category', [DeveloperController::class, 'jujuryXCategory']);
+Route::get('/developer/get-jury-category', [DeveloperController::class, 'getJuriesByCategory'])->name('get-jury-category');
+Route::post('/developer/assign-jury-category', [DeveloperController::class, 'assignJuryCategories'])->name('assign-jury-category');
 
 Route::delete('/delete-category/{id}', function ($id) {
     $cat = \App\Cat::findOrFail($id);

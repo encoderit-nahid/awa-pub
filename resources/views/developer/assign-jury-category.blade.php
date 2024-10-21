@@ -34,7 +34,9 @@
                             name="category_id"
                     >
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+                                    @if($category->id == request('cat_id', null)) selected @endif
+                            >{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -51,7 +53,7 @@
                             name="jury_ids[]"
                     >
                         @foreach($juries as $jury)
-                            <option value="{{ $jury->id }}">{{ $jury->name }} | {{ $jury->email }}</option>
+                            <option value="{{ $jury->id }}" @if(in_array($jury->id, $juryIds ?? [])) selected @endif>{{ $jury->name }} | {{ $jury->email }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -68,4 +70,18 @@
 @section('additional-js')
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#category_id').on('change', function () {
+                let categoryId = $(this).val();
+
+                if (categoryId) {
+                    const url = "{{ route('get-jury-category') }}";
+                    window.location.href = url + '?cat_id=' + categoryId;
+                }
+            });
+        });
+    </script>
 @endsection
