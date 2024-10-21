@@ -31,7 +31,7 @@
                             data-live-search="true"
                             style="width: 100% !important; font-size: 16px!important;"
                             id="category_id"
-                            name="category_id"
+                            name="cat_id"
                     >
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}"

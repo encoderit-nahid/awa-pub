@@ -28,15 +28,15 @@ class DeveloperController extends Controller
         return view('developer.assign-jury-category', compact('categories', 'juries', 'juryIds'));
     }
 
-    public function assignJuryCategories(): \Illuminate\Http\RedirectResponse
+    public function assignJuryCategories(Request $request)
     {
-        $this->validate(request(), [
+        $this->validate($request, [
             'jury_ids' => 'required|array',
             'cat_id' => 'required|exists:cats,id'
         ]);
 
-        $cat_id = request()->get('cat_id');
-        $jury_ids = request()->get('jury_ids');
+        $cat_id = $request->cat_id;
+        $jury_ids = $request->jury_ids;
 
         JuryCategoryPermission::where('cat_id', $cat_id)->delete();
         foreach ($jury_ids as $jury_id) {
