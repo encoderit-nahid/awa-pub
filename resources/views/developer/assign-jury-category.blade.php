@@ -40,23 +40,25 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-6">
-                    <div>
-                        <label for="jury_id">Jury:</label>
+                @if(request('cat_id'))
+                    <div class="col-6">
+                        <div>
+                            <label for="jury_id">Jury:</label>
+                        </div>
+                        <select
+                                class="selectpicker"
+                                multiple
+                                data-live-search="true"
+                                style="width: 100%; font-size: 16px!important;"
+                                id="jury_id"
+                                name="jury_ids[]"
+                        >
+                            @foreach($juries as $jury)
+                                <option value="{{ $jury->id }}" @if(in_array($jury->id, $juryIds ?? [])) selected @endif>{{ $jury->name }} | {{ $jury->email }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <select
-                            class="selectpicker"
-                            multiple
-                            data-live-search="true"
-                            style="width: 100%; font-size: 16px!important;"
-                            id="jury_id"
-                            name="jury_ids[]"
-                    >
-                        @foreach($juries as $jury)
-                            <option value="{{ $jury->id }}" @if(in_array($jury->id, $juryIds ?? [])) selected @endif>{{ $jury->name }} | {{ $jury->email }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                @endif
             </div>
             <br>
             <div>

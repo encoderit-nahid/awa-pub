@@ -30,6 +30,8 @@ class DeveloperController extends Controller
 
     public function assignJuryCategories(Request $request)
     {
+        abort_if(auth()->user()->rolle != 9, 403);
+
         $this->validate($request, [
             'jury_ids' => 'required|array',
             'cat_id' => 'required|exists:cats,id'
