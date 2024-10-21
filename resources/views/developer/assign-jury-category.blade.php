@@ -18,6 +18,8 @@
             </div>
         @endif
 
+        <h3>Assign jury members to categories</h3>
+        <hr>
         <form action="{{ route('assign-jury-category') }}" method="POST">
             @csrf
             @method('POST')
