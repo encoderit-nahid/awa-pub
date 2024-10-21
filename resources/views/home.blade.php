@@ -234,7 +234,7 @@
                         <div>
                             <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
                         </div>
-                        <!-- Nahid -->
+                        <!-- End Nahid -->
 
                         <!-- Rejected Projects table data  -->
                         </br></br>
