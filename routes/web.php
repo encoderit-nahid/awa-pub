@@ -260,6 +260,17 @@ Route::get('/jury-x-category', function () {
     return view('developer.jury-x-category', compact('categories'));
 });
 
+Route::get('/developer/assign-jury-category', function () {
+    $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])
+        ->orderBy('name', 'ASC')->get();
+    $juries = \App\User::where('rolle', 1)->get();
+    return view('developer.assign-jury-category', compact('categories', 'juries'));
+});
+
+Route::post('/developer/assign-jury-category', function () {
+    return view('developer.assign-jury-category');
+})->name('assign-jury-category');
+
 Route::delete('/delete-category/{id}', function ($id) {
     $cat = \App\Cat::findOrFail($id);
     $cat->delete();
