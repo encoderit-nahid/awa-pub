@@ -40,21 +40,26 @@
                                 </script> -->
                                 <ul>
                                     <li>Bitte ergänze und aktualisiere deine Firmendaten (Instagramprofil,
-                                        Rechnungsadresse...)</li>
+                                        Rechnungsadresse...)
+                                    </li>
                                     <li>Bitte denk daran, die Projekte <strong>anonymisiert</strong> einzureichen.</li>
                                     <li>Sobald Du ein Projekt angelegt und gespeichert hast, werden die Daten auch dem
-                                        Award-Team sichtbar.</li>
+                                        Award-Team sichtbar.
+                                    </li>
                                     <li>Du kannst Deine Projekte bis zum <strong>15.11.2022</strong>
-                                        ändern/korrigieren/ergänzen.</li>
+                                        ändern/korrigieren/ergänzen.
+                                    </li>
                                     <li>Das Copyright für die Fotos ist ein absolutes Pflichtfeld (DSGVO) - das Copyright
-                                        wird der Jury nicht angezeigt!</li>
-                                    <li>Ein finales Abschicken oder Einreichen des Projektes ist nicht erforderlich. </li>
+                                        wird der Jury nicht angezeigt!
+                                    </li>
+                                    <li>Ein finales Abschicken oder Einreichen des Projektes ist nicht erforderlich.</li>
                                     <li>Nach dem <strong>15.11.2022</strong> erfolgt die Kontrolle und Freigabe an die Jury.
                                         Sobald euer Projekt freigegeben wurde, ändert sich der Status von
                                         <strong>„abgespeichert“ zu „freigeben“</strong>. Diese Kontrolle kann bis zu 3
                                         Wochen dauern.
                                     </li>
-                                    <li>Wir wünschen dir viel Erfolg!</li><br>
+                                    <li>Wir wünschen dir viel Erfolg!</li>
+                                    <br>
                                     <p>Susanne Hummel & Bianca Lehrner</p>
                                     <li>Die Rechnung wird Dir nach Freigabe des Projektes via E-Mail zugeschickt!<br>
                                         <br>
@@ -139,41 +144,41 @@
                                 2. Bewertungsrunde geschickt wird.<br><br>
                                 <b>Bewertungsrunde 2</b><br>
                                 Sobald alle Juroren die erste Bewertungsrunde durch haben, wird die 2. Bewertungsrunde
-                                von uns freigeschalten.<br />
+                                von uns freigeschalten.<br/>
 
                                 Hier bewerten alle Juroren alle Projekte – aufgrund eurer Vorauswahl wird sich die
                                 Anzahl massiv reduzieren. Somit bleibt euch mehr Zeit & Aufmerksamkeit für die
-                                verbliebenen Projekte.<br /><br />
-                                Bewertet bitte die Kreativität & Originalität der Projekte.<br /><br />
-                                1)Bitte bewertet eine Kategorie nach der anderen<br />
-                                2) Ihr solltet die Arbeiten einer Kategorie am gleichen Tag bewerten<br />
+                                verbliebenen Projekte.<br/><br/>
+                                Bewertet bitte die Kreativität & Originalität der Projekte.<br/><br/>
+                                1)Bitte bewertet eine Kategorie nach der anderen<br/>
+                                2) Ihr solltet die Arbeiten einer Kategorie am gleichen Tag bewerten<br/>
                                 3) Verschafft euch zuerst einen Überblick. Dazu scrollt bitte ganz nach unten und ladet
                                 die Bilder vollständig. Erst wenn ihr den Text „no more projects“ seht, ist die
-                                Kategorie vollständig geladen<br />
+                                Kategorie vollständig geladen<br/>
                                 4) Zur genaueren Betrachtung der Bilder, klickt auf das Foto – eine größere Anzeige wird
                                 geöffnet. Möchtet ihr es noch genauer sehen, könnt ihr das Bild mit der rechten
-                                Maustaste in einem neuen Tab öffnen<br />
+                                Maustaste in einem neuen Tab öffnen<br/>
                                 5) Bewertet die Projekte mit einer Punktevergabe von 0-100. 100 ist die
-                                Bestzahl.<br /><br />
-                                Bewertungshilfestellung:<br />
-                                • 100 Punkte: außergewöhnlich, beeindruckend<br />
-                                • 80-90 Punkte: sehr schön, bleibt mir in Erinnerung<br />
-                                • 60-70 Punkte: schon sehr viel Schönes/Gutes dabei<br />
-                                • 40-50 Punkte: solide Arbeit<br />
-                                • 20-30 Punkte: o.k.<br />
+                                Bestzahl.<br/><br/>
+                                Bewertungshilfestellung:<br/>
+                                • 100 Punkte: außergewöhnlich, beeindruckend<br/>
+                                • 80-90 Punkte: sehr schön, bleibt mir in Erinnerung<br/>
+                                • 60-70 Punkte: schon sehr viel Schönes/Gutes dabei<br/>
+                                • 40-50 Punkte: solide Arbeit<br/>
+                                • 20-30 Punkte: o.k.<br/>
                                 • 10 Punkte: nicht bewertungswürdig (Arbeit schlecht, Bewerbung schlecht, lieblos) –
                                 diese Arbeiten sollten eigentlich gar nicht mehr in der 2. Bewertungsrunde
-                                aufscheinen<br /><br />
+                                aufscheinen<br/><br/>
                                 6) Sobald ihr einen Punktewert ausgewählt habt, wurde das Projekt bewertet und es
-                                verschwindet aus der Übersicht. Es kann nicht mehr zurückgeholt werden<br />
+                                verschwindet aus der Übersicht. Es kann nicht mehr zurückgeholt werden<br/>
                                 7) Bitte bewertet ALLE Kategorien und Projekte, damit jeder Teilnehmer eine faire und
-                                gleiche Chance bekommt.<br /><br />
+                                gleiche Chance bekommt.<br/><br/>
 
                                 Bewertet wird in erster Linie Kreativität und Originalität. Lest dazu bitte auch diverse
-                                Texte.<br />
-                                Vielen Dank für euren Einsatz!<br />
-                                Und jetzt viel Spaß<br />
-                                Susanne & das AWA Team<br />
+                                Texte.<br/>
+                                Vielen Dank für euren Einsatz!<br/>
+                                Und jetzt viel Spaß<br/>
+                                Susanne & das AWA Team<br/>
                                 P.S.: Solltet ihr Fragen haben, meldet euch auch gerne telefonisch bei mir: 0043 699
                                 1000 86 55 oder per Mail: office@austrianweddingaward.at
                                 <br><br>
@@ -213,9 +218,9 @@
                                 @elseif ($user->rolle == 1 || $user->rolle == 2)
                                     @if ($user->voting == 1)
                                         <a style="display: {{ $displayPermission ? 'none' : 'inline-block' }}"
-                                            href="{{ route('project-show-1st-round') }}">{{ __('1. Bewertungsrunde') }}</a>
+                                           href="{{ route('project-show-1st-round') }}">{{ __('1. Bewertungsrunde') }}</a>
                                         <a style="display: {{ $displayPermission ? 'inline-block' : 'none' }}"
-                                            href="{{ route('project-freigegebene') }}">{{ __('2. Bewertungsrunde') }}</a>
+                                           href="{{ route('project-freigegebene') }}">{{ __('2. Bewertungsrunde') }}</a>
                                         |
                                         <a href="{{ route('project-show-rater') }}">{{ __('Projekt(e) bewerten') }}</a>
                                     @endif
@@ -224,7 +229,13 @@
                                 @endif
                             </div>
                         @endif
+
+                        <!-- Nahid -->
+                        <div>
                             <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
+                        </div>
+                        <!-- Nahid -->
+
                         <!-- Rejected Projects table data  -->
                         </br></br>
                         @if (count($projects) > 0)
@@ -232,42 +243,42 @@
                             <p>Bitte auf das Projekt klicken um den Fehler zu beheben:</p>
                             <table class="table table-striped table-bordered">
                                 <thead>
-                                    <tr>
-                                        <th>Project ID </th>
-                                        <th>Project Name</th>
-                                        <th>Mangel</th>
-                                        <th>Action</th>
-                                    </tr>
+                                <tr>
+                                    <th>Project ID</th>
+                                    <th>Project Name</th>
+                                    <th>Mangel</th>
+                                    <th>Action</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                     <?php //echo'<pre>'; print_r($projects);
                                     ?>
-                                    @foreach ($projects as $project)
-                                        <tr>
-                                            <td><a
+                                @foreach ($projects as $project)
+                                    <tr>
+                                        <td><a
                                                     href="{{ url('project/single/admin/' . $project->id) }}">{{ $project->id }}</a>
-                                            </td>
-                                            <td><a
+                                        </td>
+                                        <td><a
                                                     href="{{ url('project/single/admin/' . $project->id) }}">{{ $project->projektname }}</a>
-                                            </td>
-                                            <td>{{ $project->reject_text }}</td>
-                                            <td>
-                                                <form method="POST" action="{{ route('project-change') }}">
-                                                    @csrf
-                                                    {{ Form::hidden('projectID', $project->id) }}
-                                                    {{ Form::hidden('catID', $project->cat_id) }}
-                                                    <button type="submit" class="btn btn-primary" value="change"
+                                        </td>
+                                        <td>{{ $project->reject_text }}</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('project-change') }}">
+                                                @csrf
+                                                {{ Form::hidden('projectID', $project->id) }}
+                                                {{ Form::hidden('catID', $project->cat_id) }}
+                                                <button type="submit" class="btn btn-primary" value="change"
                                                         name="submit">
-                                                        {{ __('Ändern') }}
-                                                    </button>
-                                                    <a href="{{ url('/project/add-image/' . $project->id . '/' . $project->cat_id) }}"
-                                                        class="btn btn-primary" disabled>Bild hinzufügen</a>
-                                                    <a href="{{ url('/project/edit-image/' . $project->id . '/' . $project->cat_id) }}"
-                                                        class="btn btn-primary" disabled>Bild(er) ändern</a>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                    {{ __('Ändern') }}
+                                                </button>
+                                                <a href="{{ url('/project/add-image/' . $project->id . '/' . $project->cat_id) }}"
+                                                   class="btn btn-primary" disabled>Bild hinzufügen</a>
+                                                <a href="{{ url('/project/edit-image/' . $project->id . '/' . $project->cat_id) }}"
+                                                   class="btn btn-primary" disabled>Bild(er) ändern</a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         @endif
@@ -321,13 +332,13 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $(document).on('click', '.share-btn', function() {
+            $(document).on('click', '.share-btn', function () {
                 var $this = $(this)
                 let id = $this.data("id");
                 $.ajax({
@@ -336,7 +347,7 @@
                     data: {
                         id: id
                     },
-                    success: function(data) {
+                    success: function (data) {
                         var sampleTextarea = document.createElement("textarea");
                         document.body.appendChild(sampleTextarea);
                         sampleTextarea.value = data.url; //save main text in it
@@ -344,7 +355,7 @@
                         document.execCommand("copy");
                         document.body.removeChild(sampleTextarea);
                     },
-                    error: function(data) {
+                    error: function (data) {
                         console.log('Error:', data);
                     }
                 });
