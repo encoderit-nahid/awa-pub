@@ -223,7 +223,9 @@
                                         <a href="{{ route('project-show-rater') }}">{{ __('Projekt(e) bewerten') }}</a>
                                     @endif
                                 @elseif ($user->rolle == 9)
-                                    <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>
+                                    <!-- Nahid -->
+                                    {{--                                    <a href="{{ route('project-freigeben') }}">{{ __('Projekt(e) freigeben') }}</a>--}}
+                                    <!-- End Nahid -->
                                 @endif
                             </div>
                         @endif
