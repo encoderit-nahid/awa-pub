@@ -96,8 +96,9 @@
                                             <td><img style="width: 20px; height: auto"
                                                     src="{{ url($single_user->rating_visible . '.jpg') }}"></td>
                                             <td>
-                                                <a href="{{ url('/change-status/voting/' . $single_user->id) }}"> <button
-                                                        class="btn btn-primary btn-sm">Voting</button></a>
+                                                <a href="{{ url('/change-status/voting/' . $single_user->id) }}">
+                                                    <button class="btn btn-primary btn-sm">Voting</button>
+                                                </a>
                                                 @if ($single_user->rolle != 9)
                                                     <a href="{{ url('/change-status/insert/' . $single_user->id) }}">
                                                         <button class="btn btn-primary btn-sm">Insert</button></a>

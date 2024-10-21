@@ -22,6 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'vorname', 'firma', 'anr', 'agb', 'newsletter', 'datenschutz', 'voucher', 'instagram', 'teilnahmebedingung',
+        'voting', 'insert', 'certificate', 'changes', 'is_upload_award'
     ];
     protected static $logAttributes = [
         'name', 'email'

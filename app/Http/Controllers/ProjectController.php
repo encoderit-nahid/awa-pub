@@ -552,14 +552,15 @@ class ProjectController extends Controller
 
         $user = User::find($user_id);
 
-        if ($type == 'excellence') {
-            $user->rolle = '5';
-        } elseif ($type == 'voting') {
-            $user->rolle = '2';
+//        if ($type == 'excellence') {
+//            $user->rolle = '5';
+//        } else
+        if ($type == 'voting') {
+            $user->voting = !$user->voting;
         } elseif ($type == 'insert') {
-            $user->rolle = '9';
+            $user->insert = !$user->insert;
         } elseif ($type == 'certificate') {
-            $user->rolle = '1';
+            $user->certificate = !$user->certificate;
         } elseif ($type == 'is_upload_award') {
             $user->is_upload_award = !$user->is_upload_award;
         } elseif ($type == 'rating_visible') {
@@ -2417,8 +2418,7 @@ class ProjectController extends Controller
                 'projects' => view('ajax-load-admin')->with(compact('projects', 'user', 'all_cats', 'cat_id', 'do_work', 'users'))->render(),
                 'next_page' => $projects->nextPageUrl()
             ];
-        }
-        else {
+        } else {
             $count = Project::where('stat', '=', '0')
                 ->where('is_selected_for_first_evaluation', '=', false)
                 ->with('images');
