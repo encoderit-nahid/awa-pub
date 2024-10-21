@@ -272,9 +272,9 @@
                                                     {{ __('Ändern') }}
                                                 </button>
                                                 <a href="{{ url('/project/add-image/' . $project->id . '/' . $project->cat_id) }}"
-                                                   class="btn btn-primary" disabled>Bild hinzufügen</a>
+                                                   class="btn btn-primary">Bild hinzufügen</a>
                                                 <a href="{{ url('/project/edit-image/' . $project->id . '/' . $project->cat_id) }}"
-                                                   class="btn btn-primary" disabled>Bild(er) ändern</a>
+                                                   class="btn btn-primary">Bild(er) ändern</a>
                                             </form>
                                         </td>
                                     </tr>
