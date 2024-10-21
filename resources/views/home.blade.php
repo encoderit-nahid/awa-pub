@@ -203,13 +203,11 @@
                         @endif
 
                         @if ($user->first == 0)
-
                             <script type="text/javascript">
                                 window.location = "user-change"; //here double curly bracket
                             </script>
                         @else
                             <div class="links">
-
                                 @if ($user->rolle == 0)
                                     @if ($user->voting == 1)
                                         <a href="{{ route('project-insert') }}">{{ __('Projekt anlegen') }}</a><br>
