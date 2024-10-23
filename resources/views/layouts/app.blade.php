@@ -177,6 +177,8 @@
 
 
 
+
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -416,9 +418,10 @@ if (!isset($access_token)) {
             // }
 
             // get the max duration attribute
-            const maxDuration = Number(fileInput.getAttribute('max-duration'));
+            let maxDuration = Number(fileInput.getAttribute('max-duration'));
             let inLimit = false
             if (maxDuration) {
+                maxDuration = maxDuration + 5
                 const video = document.createElement('video');
                 video.preload = 'metadata';
                 video.onloadedmetadata = function () {
