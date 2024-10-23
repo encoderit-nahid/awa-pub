@@ -179,6 +179,7 @@
 
 
 
+
                             @endif -->
                             <li><a class="nav-link" href="{{ route('my-badges') }}">{{ __('Badge') }}</a></li>
                             <li><a class="nav-link"
@@ -435,7 +436,9 @@ if (!isset($access_token)) {
 
                     if (!inLimit) {
                         $(".load-overlay").css('display', 'none');
-                        alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
+                        let maxDurationInMinutes = ((maxDuration - 5) / 60).toFixed(2); // Convert seconds to minutes
+                        alert('Please choose a file with duration less than ' + maxDurationInMinutes + ' minutes');
+                        // alert('Please choose a file with duration less than ' + maxDuration + ' seconds');
                         return;
                     }
                     uploadToDropBox();
