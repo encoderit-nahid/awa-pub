@@ -33,9 +33,6 @@
                                 </div>
                             </div>
 
-
-
-
                             {{ Form::hidden('project_id', $project->id) }}
                             {{ Form::hidden('cat_id', $project->cat_id) }}
 
