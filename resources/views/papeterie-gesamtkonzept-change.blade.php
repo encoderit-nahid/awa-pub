@@ -210,25 +210,5 @@
         });
     </script>
 
-    <script src="https://code.jquery.com/jquery-1.5.js"></script>
-    <script>
-        var max = {{ $cats->words }};
-        $(document).ready(function() {
-            $("#testimonial").on('keyup', function() {
-                var words = this.value.match(/\S+/g).length;
-
-                if (words > max) {
-                    // Split the string on first 200 words and rejoin on spaces
-                    var trimmed = $(this).val().split(/\s+/, max).join(" ");
-                    // Add a space at the end to make sure more typing creates new words
-                    $(this).val(trimmed + " ");
-                } else {
-                    $('#display_count_referenz').text(words);
-                    $('#word_left').text(max - words);
-                }
-            });
-        });
-    </script>
-
     <script src="{{ asset('js/custom.js') }}"></script>
 @endsection
