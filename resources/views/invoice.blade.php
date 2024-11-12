@@ -58,7 +58,8 @@
                                         <td>{{ $single_user->vorname }} {{ $single_user->name }}</td>
                                         <td>{{ $single_user->email }}</td>
                                         <td> <a href="{{ url('/downlaod/pdf/' . $single_user->id) }}" download="download">
-                                                <button class="btn btn-primary">Download</button></a> <button
+                                                <button class="btn btn-primary">Download</button></a>
+                                            <button
                                                 class="btn btn-primary send" data-id="{{ $single_user->id }}"
                                                 data-email="{{ $single_user->email }}"
                                                 data-name="{{ $single_user->vorname }} {{ $single_user->name }}">Sending
