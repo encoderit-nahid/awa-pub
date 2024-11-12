@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Log;
+use PDF;
 use File;
 use Hash;
 use App\Cat;
@@ -673,7 +673,8 @@ class ProjectController extends Controller
         // Storage::put('public/bills/'.$print_invoice . '.pdf', $content);
         // return $print_invoice . '.pdf';
 
-        return PDF::loadView('pdf.invoice', compact('projects', 'user', 'date', 'invoice', 'year'));
+        $pdf = PDF::loadView('pdf.invoice', compact('projects', 'user', 'date', 'invoice', 'year'));
+        return $pdf;
     }
 
     public function send_invoice(Request $request)
