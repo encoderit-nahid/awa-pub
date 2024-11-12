@@ -92,6 +92,40 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="datum"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Datum der Hochzeit*') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="datum" type="text" value="{{ $project->datum }}"
+                                           class="form-control{{ $errors->has('datum') ? ' is-invalid' : '' }}" name="datum"
+                                           value="{{ old('datum') }}" required>
+
+                                    @if ($errors->has('datum'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('datum') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="ort"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Ort der Hochzeit*') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="ort" type="text" value="{{ $project->ort }}"
+                                           class="form-control{{ $errors->has('ort') ? ' is-invalid' : '' }}" name="ort"
+                                           value="{{ old('ort') }}" required>
+
+                                    @if ($errors->has('ort'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('ort') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="testimonial"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Referenz mit Kontaktdaten *') }}</label>
 
