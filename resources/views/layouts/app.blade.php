@@ -357,7 +357,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <?php
 if (!isset($access_token)) {
-    $access_token = '';
+
+    $dropbox = new Dcblogdev\Dropbox\Dropbox();
+    $access_token = $token = $dropbox->getAccessToken();
 }
 ?>
 
@@ -430,9 +432,9 @@ if (!isset($access_token)) {
                     if (video.duration < maxDuration) {
                         inLimit = true;
                     }
-                    console.log(inLimit)
-                    console.log('video.duration', video.duration)
-                    console.log('maxDuration', maxDuration)
+                    // console.log(inLimit)
+                    // console.log('video.duration', video.duration)
+                    // console.log('maxDuration', maxDuration)
 
                     if (!inLimit) {
                         $(".load-overlay").css('display', 'none');

@@ -20,7 +20,8 @@
         "spatie/laravel-activitylog": "^3.8",
         "srmklive/paypal": "~2.0",
         "vimeo/laravel": "^5.4",
-        "vimeo/vimeo-api": "3.0.2"
+        "vimeo/vimeo-api": "3.0.2",
+      "ext-curl": "*"
     },
     "require-dev": {
         "appzcoder/crud-generator": "^3.0",
