@@ -33,6 +33,7 @@
                                 </div>
                             </div>
 
+
                             {{ Form::hidden('project_id', $project->id) }}
                             {{ Form::hidden('cat_id', $project->cat_id) }}
 
@@ -74,34 +75,34 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="datum"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Datum der Hochzeit*') }}</label>
+                                <label for="youtube"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Video*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="datum" type="text" value="{{ $project->datum }}"
-                                           class="form-control{{ $errors->has('datum') ? ' is-invalid' : '' }}" name="datum"
-                                           value="{{ old('datum') }}" required>
-
-                                    @if ($errors->has('datum'))
+                                    <input id="youtube" type="file" value="{{ $project->youtube }}"
+                                           class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}"
+                                           name="youtube" value="{{ old('youtube') }}" accept="video/mp4,video/x-m4v,video/*">
+                                    <input type="hidden" id="uploaded-youtube-file-name" name="uploaded_youtube_file_name">
+                                    @if ($errors->has('youtube'))
                                         <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('datum') }}</strong>
+                                            <strong>{{ $errors->first('youtube') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="ort"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Ort der Hochzeit*') }}</label>
+                                <label for="testimonial"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Referenz mit Kontaktdaten *') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ort" type="text" value="{{ $project->ort }}"
-                                           class="form-control{{ $errors->has('ort') ? ' is-invalid' : '' }}" name="ort"
-                                           value="{{ old('ort') }}" required>
-
-                                    @if ($errors->has('ort'))
+                                    <textarea id="testimonial" rows="10" class="form-control{{ $errors->has('testimonial') ? ' is-invalid' : '' }}"
+                                              name="testimonial" value="{{ old('testimonial') }}" required>{{ $project->testimonial }}</textarea>
+                                    Erlaubte Wörter: {{ $cats->words }} - Wörter total : <span
+                                            id="display_count_referenz">0</span> Wörter!
+                                    @if ($errors->has('testimonial'))
                                         <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('ort') }}</strong>
+                                            <strong>{{ $errors->first('testimonial') }}</strong>
                                         </span>
                                     @endif
                                 </div>
