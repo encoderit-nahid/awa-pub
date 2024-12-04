@@ -53,7 +53,7 @@ class DeveloperController extends Controller
       ]);
       $project = Project::where('cat_id', $cat_id)->first();
       if ($project) {
-        FirstRoundEvaluation::create([
+        FirstRoundEvaluation::updateOrCreate([
           'jury_id' => $jury_id,
           'project_id' => $project->id,
         ]);
