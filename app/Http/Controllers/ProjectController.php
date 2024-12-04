@@ -1749,7 +1749,7 @@ class ProjectController extends Controller
       ->pluck('cat_id')
       ->toArray();
 
-    $evaluation = FirstRoundEvaluation::where('project_id', 28)
+    $evaluation = FirstRoundEvaluation::where('jury_id', 1157)
       ->get();
     dd($evaluation);
 
