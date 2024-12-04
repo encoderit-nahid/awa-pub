@@ -75,6 +75,7 @@ class DeveloperController extends Controller
       foreach ($JuryCategoryPermissions as $JuryCategoryPermission) {
         $USER = User::withTrashed()->find($JuryCategoryPermission->user_id);
         $projects = Project::where('cat_id', $JuryCategoryPermission->cat_id)->get();
+        $USER->firstRoundEvaluation()->delete();
         foreach ($projects as $project) {
           $USER->firstRoundEvaluation()->updateOrCreate(['project_id' => $project->id]);
         }
