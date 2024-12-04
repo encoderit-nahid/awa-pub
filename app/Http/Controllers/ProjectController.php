@@ -1808,8 +1808,8 @@ class ProjectController extends Controller
       if ($cat_id == null) {
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
           ->select('projects.*')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->where('stat', '=', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
           ->where('is_failed_first_evolution', '=', false)
