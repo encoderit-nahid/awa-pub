@@ -76,7 +76,7 @@ class DeveloperController extends Controller
         $USER = User::withTrashed()->find($JuryCategoryPermission->user_id);
         $projects = Project::where('cat_id', $JuryCategoryPermission->cat_id)->get();
         foreach ($projects as $project) {
-          $data[]  = $USER->firstRoundEvaluation()->updateOrCreate(['project_id' => $project->id]);
+          $USER->firstRoundEvaluation()->updateOrCreate(['project_id' => $project->id]);
         }
       }
     }
