@@ -1964,8 +1964,10 @@ class ProjectController extends Controller
   {
     $id = $data->id;
     $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->id())->where('project_id', $id)->first();
-    $evaluation->status = 0;
-    $evaluation->save();
+    if ($evaluation) {
+      $evaluation->status = 0;
+      $evaluation->save();
+    }
 
     $juries = FirstRoundEvaluation::where('project_id', $id)->count();
     $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 0)->count();
