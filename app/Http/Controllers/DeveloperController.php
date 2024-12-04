@@ -85,7 +85,6 @@ class DeveloperController extends Controller
       $data[] = [
         '$project' => $project,
         '$project->firstRoundEvaluation' => $project->firstRoundEvaluation,
-        '$project->firstRoundEvaluation->jury' => $project->firstRoundEvaluation->jury,
       ];
     }
     dd($data);
