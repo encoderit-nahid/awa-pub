@@ -1794,7 +1794,7 @@ class ProjectController extends Controller
                 ->where('is_selected_for_first_evaluation', '=', true)
                 ->where('is_failed_first_evolution', '=', false)
                 ->pluck('projects.id')
-                ->distinct()
+                ->unique()
                 ->toArray();
 
 //            if ($cat_id == null) {
