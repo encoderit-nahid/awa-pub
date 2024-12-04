@@ -76,17 +76,17 @@ class DeveloperController extends Controller
         $USER = User::withTrashed()->find($JuryCategoryPermission->user_id);
         $projects = Project::where('cat_id', $JuryCategoryPermission->cat_id)->get();
         foreach ($projects as $project) {
-          $USER->firstRoundEvaluation()->create(['project_id' => $project->id]);
+          $data[]  = $USER->firstRoundEvaluation()->updateOrCreate(['project_id' => $project->id]);
         }
       }
     }
-    $projects = \App\Project::where('cat_id', 28)->get();
-    foreach ($projects as $project) {
-      $data[] = [
-        '$project' => $project,
-        '$project->firstRoundEvaluation' => $project->firstRoundEvaluation,
-      ];
-    }
+//    $projects = \App\Project::where('cat_id', 28)->get();
+//    foreach ($projects as $project) {
+//      $data[] = [
+//        '$project' => $project,
+//        '$project->firstRoundEvaluation' => $project->firstRoundEvaluation,
+//      ];
+//    }
     dd($data);
     return response()->json(['status' => 'Reasign successfully', '$data' => $data]);
   }
