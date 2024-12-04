@@ -67,6 +67,11 @@ class Project extends Model
     return $this->belongsTo(\App\Cat::class, 'cat_id');
   }
 
+  public function firstRoundEvaluation(): \Illuminate\Database\Eloquent\Relations\HasOne
+  {
+    return $this->hasOne(\App\FirstRoundEvaluation::class, 'project_id');
+  }
+
   public function scopeWithImages($queries) {
     return $queries->with(['images' => function ($imageQ) {
       return $imageQ->select(['id', 'project_id', 'url', 'thumb_url'])->inRandomOrder();
