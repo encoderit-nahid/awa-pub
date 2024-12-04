@@ -78,12 +78,15 @@ class DeveloperController extends Controller
         foreach ($projects as $project) {
           $USER->firstRoundEvaluation()->create(['project_id' => $project->id]);
         }
-        $data[] = [
-          'category' => $category->name,
-          'jury' => $JuryCategoryPermission->user->name,
-          'projects' => $projects->count()
-        ];
       }
+    }
+    $projects = \App\Project::where('cat_id', 28)->get();
+    foreach ($projects as $project) {
+      $data[] = [
+        '$project' => $project,
+        '$project->firstRoundEvaluation' => $project->firstRoundEvaluation,
+        '$project->firstRoundEvaluation->jury' => $project->firstRoundEvaluation->jury,
+      ];
     }
     dd($data);
     return response()->json(['status' => 'Reasign successfully', '$data' => $data]);
