@@ -1750,7 +1750,7 @@ class ProjectController extends Controller
       ->toArray();
 
     $evaluation = FirstRoundEvaluation::where('jury_id', 1157)
-      ->get();
+      ->get()->toArray();
     dd($evaluation);
 
     $all_cats = Cat::orderBy('name')->wherein('id', $jury_cats)->pluck('name', 'id');
