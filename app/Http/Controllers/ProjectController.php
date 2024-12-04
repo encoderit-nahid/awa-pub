@@ -1756,8 +1756,7 @@ class ProjectController extends Controller
         if (!empty($keyword)) {
             /*search in project*/
             $project_with_search = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
-                $query->where('jury_id', $user->id)
-                    ->whereNull('status');
+                $query->where('jury_id', $user->id)->whereNull('status');
             })
 //                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
 //                    ->select('projects.*')
@@ -1783,8 +1782,7 @@ class ProjectController extends Controller
 
             if ($cat_id == null) {
                 $projects = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
-                    $query->where('jury_id', $user->id)
-                        ->whereNull('status');
+                    $query->where('jury_id', $user->id)->whereNull('status');
                 })
 //                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
 //                    ->select('projects.*')
@@ -1800,8 +1798,7 @@ class ProjectController extends Controller
                     ->paginate(5);
             } else {
                 $projects = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
-                    $query->where('jury_id', $user->id)
-                        ->whereNull('status');
+                    $query->where('jury_id', $user->id)->whereNull('status');
                 })
 //                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
 //                    ->select('projects.*')
@@ -1819,8 +1816,7 @@ class ProjectController extends Controller
         } else {
             if ($cat_id == null) {
                 $projects = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
-                    $query->where('jury_id', $user->id)
-                        ->whereNull('status');
+                    $query->where('jury_id', $user->id)->whereNull('status');
                 })
 //                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
 //                    ->select('projects.*')
@@ -1834,8 +1830,11 @@ class ProjectController extends Controller
                     ->distinct()
                     ->paginate(5);
             } else {
-                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->select('projects.*')
+                $projects = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
+                    $query->where('jury_id', $user->id)->whereNull('status');
+                })
+//                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
 //          ->where('first_round_evaluation.jury_id', '=', $user->id)
 //          ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
@@ -1857,7 +1856,11 @@ class ProjectController extends Controller
 
         if ($request->ajax()) {
             if ($cat_id == null) {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+                $count = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
+                    $query->where('jury_id', $user->id)->whereNull('status');
+                })
+//                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
 //          ->where('first_round_evaluation.jury_id', '=', $user->id)
 //          ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
@@ -1868,7 +1871,11 @@ class ProjectController extends Controller
                     ->distinct()
                     ->count();
             } else {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+                $count = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
+                    $query->where('jury_id', $user->id)->whereNull('status');
+                })
+//                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
 //          ->where('first_round_evaluation.jury_id', '=', $user->id)
 //          ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
@@ -1899,7 +1906,11 @@ class ProjectController extends Controller
             ];
         } else {
             if ($cat_id == null) {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+                $count = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
+                    $query->where('jury_id', $user->id)->whereNull('status');
+                })
+//                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
 //          ->where('first_round_evaluation.jury_id', '=', $user->id)
 //          ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
@@ -1910,7 +1921,11 @@ class ProjectController extends Controller
                     ->distinct()
                     ->count();
             } else {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+                $count = Project::whereHas('firstRoundEvaluation', function ($query) use ($user) {
+                    $query->where('jury_id', $user->id)->whereNull('status');
+                })
+//                    ->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
 //          ->where('first_round_evaluation.jury_id', '=', $user->id)
 //          ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
