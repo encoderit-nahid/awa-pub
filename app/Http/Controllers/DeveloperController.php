@@ -51,11 +51,11 @@ class DeveloperController extends Controller
         'cat_id' => $cat_id,
         'user_id' => $jury_id
       ]);
-      $project = Project::where('cat_id', $cat_id)->get();
-      if ($project) {
-        foreach ($project as $p) {
+      $projects = Project::where('cat_id', $cat_id)->get();
+      if ($projects) {
+        foreach ($projects as $project) {
           FirstRoundEvaluation::updateOrCreate([
-            'project_id' => $p->id,
+            'project_id' => $project->id,
             'jury_id' => $jury_id
           ]);
         }

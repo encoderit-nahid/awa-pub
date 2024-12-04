@@ -78,22 +78,6 @@
         @foreach($projects as $project)
             <div>
                 <h2>{{$project->id}} -- {{$project->projektname}} -- {{$project->user_id}}</h2>
-                {{--                <ul>--}}
-                {{--                    @foreach($project->categories as $category)--}}
-                {{--                        <li>--}}
-                {{--                            <h3>{{$category->id}} -- {{$category->name}}</h3>--}}
-                {{--                            <ul>--}}
-                {{--                                @foreach($category->juryCategoryPermission as $jury_category_permission)--}}
-                {{--                                    <li>--}}
-                {{--                                        <h4>--}}
-                {{--                                            {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}--}}
-                {{--                                        </h4>--}}
-                {{--                                    </li>--}}
-                {{--                                @endforeach--}}
-                {{--                            </ul>--}}
-                {{--                        </li>--}}
-                {{--                    @endforeach--}}
-                {{--                </ul>--}}
             </div>
         @endforeach
     </div>
