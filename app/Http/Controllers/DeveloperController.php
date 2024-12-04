@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FirstRoundEvaluation;
 use App\JuryCategoryPermission;
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
@@ -70,13 +71,12 @@ class DeveloperController extends Controller
     $categories = \App\Cat::all();
     foreach ($categories as $category) {
       $JuryCategoryPermissions = JuryCategoryPermission::where('cat_id', $category->id)->get();
+
       foreach ($JuryCategoryPermissions as $JuryCategoryPermission) {
-        $projects = Project::where('cat_id', $category->id)->get();
+        $USER = User::withTrashed()->find($JuryCategoryPermission->user_id);
+        $projects = Project::where('cat_id', $JuryCategoryPermission->cat_id)->get();
         foreach ($projects as $project) {
-          FirstRoundEvaluation::updateOrCreate([
-            'project_id' => $project->id,
-            'jury_id' => $JuryCategoryPermission->user_id
-          ]);
+          $USER->firstRoundEvaluation()->create(['project_id' => $project->id]);
         }
         $data[] = [
           'category' => $category->name,
