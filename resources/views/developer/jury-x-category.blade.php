@@ -77,6 +77,7 @@
     <div>
         @foreach($projects as $project)
             <div>
+                {!! $project !!}}
                 <h2>{{$project->id}} -- {{$project->projektname}}</h2>  -- {{$project->user_id}}
                 {{--                <ul>--}}
                 {{--                    @foreach($project->categories as $category)--}}
