@@ -85,7 +85,7 @@ class DeveloperController extends Controller
         ];
       }
     }
-
+    dd($data);
     return response()->json(['status' => 'Reasign successfully', '$data' => $data]);
   }
 }
