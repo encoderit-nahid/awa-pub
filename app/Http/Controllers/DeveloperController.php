@@ -75,12 +75,12 @@ class DeveloperController extends Controller
       foreach ($JuryCategoryPermissions as $JuryCategoryPermission) {
         $USER = User::withTrashed()->find($JuryCategoryPermission->user_id);
         $projects = Project::where('cat_id', $JuryCategoryPermission->cat_id)->get();
-        $USER->firstRoundEvaluation()->delete();
         foreach ($projects as $project) {
           $USER->firstRoundEvaluation()->updateOrCreate(['project_id' => $project->id]);
         }
       }
     }
+    $data[] = FirstRoundEvaluation::where('jury_id', 1157)->get();
 //    $projects = \App\Project::where('cat_id', 28)->get();
 //    foreach ($projects as $project) {
 //      $data[] = [
@@ -88,7 +88,7 @@ class DeveloperController extends Controller
 //        '$project->firstRoundEvaluation' => $project->firstRoundEvaluation,
 //      ];
 //    }
-    dd($data);
+      dd($data);
     return response()->json(['status' => 'Reasign successfully', '$data' => $data]);
   }
 }
