@@ -5,8 +5,8 @@
         //        $users = \App\User::whereIn('rolle', [0, 9])->get();
                 $users = \App\User::get();
 
-                $projects = \App\Project::/*where('cat_id', 28)
-                ->*/get();
+                $projects = \App\Project::where('cat_id', 28)
+                ->get();
     @endphp
     <div class="container-fluid">
         <form action="">
@@ -77,8 +77,7 @@
     <div>
         @foreach($projects as $project)
             <div>
-                {!! $project !!}}
-                <h2>{{$project->id}} -- {{$project->projektname}}</h2>  -- {{$project->user_id}}
+                <h2>{{$project->id}} -- {{$project->projektname}} -- {{$project->user_id}}</h2>
                 {{--                <ul>--}}
                 {{--                    @foreach($project->categories as $category)--}}
                 {{--                        <li>--}}
