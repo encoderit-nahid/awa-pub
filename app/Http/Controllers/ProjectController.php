@@ -1854,8 +1854,8 @@ class ProjectController extends Controller
 
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
             ->select('projects.*')
-            ->where('first_round_evaluation.jury_id', '=', $user->id)
-            ->whereNull('first_round_evaluation.status')
+//            ->where('first_round_evaluation.jury_id', '=', $user->id)
+//            ->whereNull('first_round_evaluation.status')
             ->when($project_with_search, function ($query) use ($project_with_search) {
                 return $query->whereIn('projects.id', $project_with_search);
             })
