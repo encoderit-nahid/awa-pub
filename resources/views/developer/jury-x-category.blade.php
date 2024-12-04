@@ -52,7 +52,7 @@
                                                         @forelse($jury_category_permission->user->projects as $project)
                                                             <li>
                                                                 <h5>
-                                                                    {{$project->id}} -- {{$project->projektname}} -- {{$project->user_id}}
+                                                                    {{$project->id}} -- {{$project->projektname}}
                                                                 </h5>
                                                             </li>
                                                         @empty
@@ -77,7 +77,7 @@
     <div>
         @foreach($projects as $project)
             <div>
-                <h2>{{$project->id}} -- {{$project->projektname}}</h2>
+                <h2>{{$project->id}} -- {{$project->projektname}}</h2>  -- {{$project->user_id}}
                 {{--                <ul>--}}
                 {{--                    @foreach($project->categories as $category)--}}
                 {{--                        <li>--}}
