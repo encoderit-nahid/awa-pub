@@ -51,12 +51,14 @@ class DeveloperController extends Controller
         'cat_id' => $cat_id,
         'user_id' => $jury_id
       ]);
-      $project = Project::where('cat_id', $cat_id)->first();
+      $project = Project::where('cat_id', $cat_id)->get();
       if ($project) {
-        FirstRoundEvaluation::updateOrCreate([
-          'jury_id' => $jury_id,
-          'project_id' => $project->id,
-        ]);
+        foreach ($project as $p) {
+          FirstRoundEvaluation::updateOrCreate([
+            'project_id' => $p->id,
+            'jury_id' => $jury_id
+          ]);
+        }
       }
     }
     return redirect()->back()->with('success', 'Jury categories assigned successfully');
