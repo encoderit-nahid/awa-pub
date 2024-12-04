@@ -1744,7 +1744,8 @@ class ProjectController extends Controller
     public function ProjectFirstRound(Request $request, $cat_id = null)
     {
         $user = Auth::user();
-        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
+//        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
+        $jury_cats = JuryCategoryPermission::where('user_id',1157)
             ->pluck('cat_id')
             ->toArray();
 
