@@ -5,7 +5,7 @@
         //        $users = \App\User::whereIn('rolle', [0, 9])->get();
                 $users = \App\User::get();
 
-                $projects = \App\Project::where('user_id', 1157)->get();
+                $projects = \App\Project::where('cat_id', 28)->get();
     @endphp
     <div class="container-fluid">
         <form action="">
