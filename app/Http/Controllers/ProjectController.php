@@ -1749,7 +1749,6 @@ class ProjectController extends Controller
             ->pluck('cat_id')
             ->toArray();
 
-        dd($jury_cats);
 
         $all_cats = Cat::orderBy('name')->wherein('id', $jury_cats)->pluck('name', 'id');
 
@@ -1813,8 +1812,8 @@ class ProjectController extends Controller
                     ->where('first_round_evaluation.jury_id', '=', $user->id)
                     ->whereNull('first_round_evaluation.status')
                     ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
                     ->whereIn('cat_id', $jury_cats)
                     ->with('images')
                     ->distinct()
