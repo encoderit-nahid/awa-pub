@@ -1753,25 +1753,6 @@ class ProjectController extends Controller
 
         $keyword = $request->get('search');
 
-
-        // new //
-        $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-            ->where('first_round_evaluation.jury_id', '=', $user->id)
-            ->whereNull('first_round_evaluation.status')
-            ->where('stat', '=', '0')
-            ->where('is_selected_for_first_evaluation', '=', true)
-            ->where('is_failed_first_evolution', '=', false)
-            ->with('images');
-
-
-        if ($cat_id == null) {
-            $count->whereIn('cat_id', $jury_cats);
-        } else {
-            $count->where('cat_id', $cat_id);
-        }
-        $count = $count->distinct()->count();
-        // End new //
-
 //        $project_with_search = null;
 //        if (!empty($keyword)) {
 //            /*search in project*/
@@ -1850,8 +1831,7 @@ class ProjectController extends Controller
 //                    ->paginate(5);
 //            }
 //        }
-
-
+        // New //
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
             ->select('projects.*')
 //            ->where('first_round_evaluation.jury_id', '=', $user->id)
@@ -1872,8 +1852,8 @@ class ProjectController extends Controller
                 });
             })
             ->where('stat', '0')
-            ->where('is_selected_for_first_evaluation', '=', true)
-            ->where('is_failed_first_evolution', '=', false)
+            ->where('is_selected_for_first_evaluation', true)
+            ->where('is_failed_first_evolution', false)
             ->with('images');
 
         if ($cat_id == null) {
@@ -1881,8 +1861,10 @@ class ProjectController extends Controller
         } else {
             $projects->where('cat_id', $cat_id);
         }
-        $projects = $projects->distinct()->paginate(5);
-
+        $projects->distinct();
+        $count = $projects->count();
+        $projects = $projects->paginate(5);
+        // New //
 
         $user_array = [];
         foreach ($projects as $project) {
