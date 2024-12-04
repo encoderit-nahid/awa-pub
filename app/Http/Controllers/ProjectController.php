@@ -1781,8 +1781,8 @@ class ProjectController extends Controller
       if ($cat_id == null) {
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
           ->select('projects.*')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->whereIn('projects.id', $project_with_search)
           ->where('stat', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
@@ -1794,8 +1794,8 @@ class ProjectController extends Controller
       } else {
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
           ->select('projects.*')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->whereIn('projects.id', $project_with_search)
           ->where('stat', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
@@ -1843,8 +1843,8 @@ class ProjectController extends Controller
     if ($request->ajax()) {
       if ($cat_id == null) {
         $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->where('stat', '=', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
           ->where('is_failed_first_evolution', '=', false)
@@ -1854,8 +1854,8 @@ class ProjectController extends Controller
           ->count();
       } else {
         $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->where('stat', '=', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
           ->where('is_failed_first_evolution', '=', false)
@@ -1885,8 +1885,8 @@ class ProjectController extends Controller
     } else {
       if ($cat_id == null) {
         $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->where('stat', '=', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
           ->where('is_failed_first_evolution', '=', false)
@@ -1896,8 +1896,8 @@ class ProjectController extends Controller
           ->count();
       } else {
         $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->where('first_round_evaluation.jury_id', '=', $user->id)
-          ->whereNull('first_round_evaluation.status')
+//          ->where('first_round_evaluation.jury_id', '=', $user->id)
+//          ->whereNull('first_round_evaluation.status')
           ->where('stat', '=', '0')
           ->where('is_selected_for_first_evaluation', '=', true)
           ->where('is_failed_first_evolution', '=', false)
