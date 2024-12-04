@@ -4,6 +4,8 @@
     @php
         //        $users = \App\User::whereIn('rolle', [0, 9])->get();
                 $users = \App\User::get();
+
+                $projects = \App\Project::all();
     @endphp
     <div class="container-fluid">
         <form action="">
@@ -70,6 +72,32 @@
             </div>
         </form>
     </div>
+
+    <div>
+        @foreach($projects as $project)
+            <div>
+                <h2>{{$project->id}} -- {{$project->projektname}}</h2>
+{{--                <ul>--}}
+{{--                    @foreach($project->categories as $category)--}}
+{{--                        <li>--}}
+{{--                            <h3>{{$category->id}} -- {{$category->name}}</h3>--}}
+{{--                            <ul>--}}
+{{--                                @foreach($category->juryCategoryPermission as $jury_category_permission)--}}
+{{--                                    <li>--}}
+{{--                                        <h4>--}}
+{{--                                            {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}--}}
+{{--                                        </h4>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                    @endforeach--}}
+{{--                </ul>--}}
+            </div>
+        @endforeach
+    </div>
+
+
 @endsection
 
 @section('additional-js')

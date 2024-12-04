@@ -10,7 +10,8 @@ class DeveloperController extends Controller
     public function jujuryXCategory()
     {
         abort_if(!auth()->user() || auth()->user()->rolle != 9, 403);
-        $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])->orderBy('name', 'ASC')->get();
+        $categories = \App\Cat::with(['juryCategoryPermission', 'juryCategoryPermission.user'])
+          ->orderBy('name', 'ASC')->get();
         return view('developer.jury-x-category', compact('categories'));
     }
 
