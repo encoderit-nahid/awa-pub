@@ -1753,6 +1753,26 @@ class ProjectController extends Controller
 
         $keyword = $request->get('search');
 
+
+        // new //
+        $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+            ->where('first_round_evaluation.jury_id', '=', $user->id)
+            ->whereNull('first_round_evaluation.status')
+            ->where('stat', '=', '0')
+            ->where('is_selected_for_first_evaluation', '=', true)
+            ->where('is_failed_first_evolution', '=', false)
+            ->with('images');
+
+
+        if ($cat_id == null) {
+            $count->wherein('cat_id', $jury_cats);
+        } else {
+            $count->where('cat_id', $cat_id);
+        }
+        $count = $count->distinct()->count();
+        // End new //
+
+        $project_with_search = null;
         if (!empty($keyword)) {
             /*search in project*/
             $project_with_search = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
@@ -1777,60 +1797,80 @@ class ProjectController extends Controller
                 ->distinct()
                 ->toArray();
 
-            if ($cat_id == null) {
-                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->select('projects.*')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->whereIn('projects.id', $project_with_search)
-                    ->where('stat', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->wherein('cat_id', $jury_cats)
-                    ->with('images')
-                    ->distinct()
-                    ->paginate(5);
-            } else {
-                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->select('projects.*')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->whereIn('projects.id', $project_with_search)
-                    ->where('stat', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->wherein('cat_id', $jury_cats)
-                    ->with('images')
-                    ->distinct()
-                    ->paginate(5);
-            }
-        } else {
-            if ($cat_id == null) {
-                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->select('projects.*')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->whereIn('cat_id', $jury_cats)
-                    ->with('images')
-                    ->distinct()
-                    ->paginate(5);
-            } else {
-                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->select('projects.*')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->distinct()
-                    ->paginate(5);
-            }
+//            if ($cat_id == null) {
+//                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->whereIn('projects.id', $project_with_search)
+//                    ->where('stat', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->wherein('cat_id', $jury_cats)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->paginate(5);
+//            } else {
+//                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->whereIn('projects.id', $project_with_search)
+//                    ->where('stat', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->wherein('cat_id', $jury_cats)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->paginate(5);
+//            }
+//        } else {
+//            if ($cat_id == null) {
+//                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->whereIn('cat_id', $jury_cats)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->paginate(5);
+//            } else {
+//                $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->select('projects.*')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->where('cat_id', $cat_id)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->paginate(5);
+//            }
         }
+
+        $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+            ->select('projects.*')
+            ->where('first_round_evaluation.jury_id', '=', $user->id)
+            ->whereNull('first_round_evaluation.status')
+            ->when($project_with_search, function ($query) use ($project_with_search) {
+                return $query->whereIn('projects.id', $project_with_search);
+            })
+            ->where('stat', '0')
+            ->where('is_selected_for_first_evaluation', '=', true)
+            ->where('is_failed_first_evolution', '=', false)
+            ->with('images');
+
+        if ($cat_id == null) {
+            $projects->wherein('cat_id', $jury_cats);
+        } else {
+            $projects->where('cat_id', $cat_id);
+        }
+        $projects = $projects->distinct()->paginate(5);
+
 
         $user_array = [];
         foreach ($projects as $project) {
@@ -1840,29 +1880,29 @@ class ProjectController extends Controller
 
 
         if ($request->ajax()) {
-            if ($cat_id == null) {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->wherein('cat_id', $jury_cats)
-                    ->with('images')
-                    ->distinct()
-                    ->count();
-            } else {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->distinct()
-                    ->count();
-            }
+//            if ($cat_id == null) {
+//                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->wherein('cat_id', $jury_cats)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->count();
+//            } else {
+//                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->where('cat_id', $cat_id)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->count();
+//            }
 
 
             $user_array = [];
@@ -1882,29 +1922,29 @@ class ProjectController extends Controller
                 'next_page' => $projects->nextPageUrl()
             ];
         } else {
-            if ($cat_id == null) {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->wherein('cat_id', $jury_cats)
-                    ->with('images')
-                    ->distinct()
-                    ->count();
-            } else {
-                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-                    ->where('first_round_evaluation.jury_id', '=', $user->id)
-                    ->whereNull('first_round_evaluation.status')
-                    ->where('stat', '=', '0')
-                    ->where('is_selected_for_first_evaluation', '=', true)
-                    ->where('is_failed_first_evolution', '=', false)
-                    ->where('cat_id', $cat_id)
-                    ->with('images')
-                    ->distinct()
-                    ->count();
-            }
+//            if ($cat_id == null) {
+//                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->wherein('cat_id', $jury_cats)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->count();
+//            } else {
+//                $count = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+//                    ->where('first_round_evaluation.jury_id', '=', $user->id)
+//                    ->whereNull('first_round_evaluation.status')
+//                    ->where('stat', '=', '0')
+//                    ->where('is_selected_for_first_evaluation', '=', true)
+//                    ->where('is_failed_first_evolution', '=', false)
+//                    ->where('cat_id', $cat_id)
+//                    ->with('images')
+//                    ->distinct()
+//                    ->count();
+//            }
 
 
             if (ceil($count) <= 5) {
