@@ -44,14 +44,14 @@
                                                     <h4>
                                                         {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}
                                                     </h4>
-{{--                                                    <div>--}}
-{{--                                                        <strong>Projects:</strong>--}}
-{{--                                                    </div>--}}
+                                                    {{--                                                    <div>--}}
+                                                    {{--                                                        <strong>Projects:</strong>--}}
+                                                    {{--                                                    </div>--}}
                                                     <ul>
                                                         @forelse($jury_category_permission->user->projects as $project)
                                                             <li>
                                                                 <h5>
-                                                                    {{$project->id}} -- {{$project->projektname}}
+                                                                    {{$project->id}} -- {{$project->projektname}} -- {{$project->user_id}}
                                                                 </h5>
                                                             </li>
                                                         @empty
@@ -77,26 +77,25 @@
         @foreach($projects as $project)
             <div>
                 <h2>{{$project->id}} -- {{$project->projektname}}</h2>
-{{--                <ul>--}}
-{{--                    @foreach($project->categories as $category)--}}
-{{--                        <li>--}}
-{{--                            <h3>{{$category->id}} -- {{$category->name}}</h3>--}}
-{{--                            <ul>--}}
-{{--                                @foreach($category->juryCategoryPermission as $jury_category_permission)--}}
-{{--                                    <li>--}}
-{{--                                        <h4>--}}
-{{--                                            {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}--}}
-{{--                                        </h4>--}}
-{{--                                    </li>--}}
-{{--                                @endforeach--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                    @endforeach--}}
-{{--                </ul>--}}
+                {{--                <ul>--}}
+                {{--                    @foreach($project->categories as $category)--}}
+                {{--                        <li>--}}
+                {{--                            <h3>{{$category->id}} -- {{$category->name}}</h3>--}}
+                {{--                            <ul>--}}
+                {{--                                @foreach($category->juryCategoryPermission as $jury_category_permission)--}}
+                {{--                                    <li>--}}
+                {{--                                        <h4>--}}
+                {{--                                            {{$jury_category_permission->user->id}} -- {{$jury_category_permission->user->name}} : {{$jury_category_permission->user->email}}--}}
+                {{--                                        </h4>--}}
+                {{--                                    </li>--}}
+                {{--                                @endforeach--}}
+                {{--                            </ul>--}}
+                {{--                        </li>--}}
+                {{--                    @endforeach--}}
+                {{--                </ul>--}}
             </div>
         @endforeach
     </div>
-
 
 @endsection
 
