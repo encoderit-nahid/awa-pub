@@ -257,6 +257,7 @@ Route::get('/all-clear', function () {
 //});
 
 Route::get('/jury-x-category', [DeveloperController::class, 'jujuryXCategory']);
+Route::get('/reasign', [DeveloperController::class, 'reasign']);
 Route::get('/developer/get-jury-category', [DeveloperController::class, 'getJuriesByCategory'])->name('get-jury-category');
 Route::post('/developer/assign-jury-category', [DeveloperController::class, 'assignJuryCategories'])->name('assign-jury-category');
 

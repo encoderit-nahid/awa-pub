@@ -63,4 +63,29 @@ class DeveloperController extends Controller
     }
     return redirect()->back()->with('success', 'Jury categories assigned successfully');
   }
+
+  public function reasign()
+  {
+    $data = [];
+    $categories = \App\Cat::all();
+    foreach ($categories as $category) {
+      $JuryCategoryPermissions = JuryCategoryPermission::where('cat_id', $category->id)->get();
+      foreach ($JuryCategoryPermissions as $JuryCategoryPermission) {
+        $projects = Project::where('cat_id', $category->id)->get();
+        foreach ($projects as $project) {
+          FirstRoundEvaluation::updateOrCreate([
+            'project_id' => $project->id,
+            'jury_id' => $JuryCategoryPermission->user_id
+          ]);
+        }
+        $data[] = [
+          'category' => $category->name,
+          'jury' => $JuryCategoryPermission->user->name,
+          'projects' => $projects->count()
+        ];
+      }
+    }
+
+    return response()->json(['status' => 'Reasign successfully', '$data' => $data]);
+  }
 }
