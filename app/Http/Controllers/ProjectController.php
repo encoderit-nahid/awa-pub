@@ -1749,6 +1749,8 @@ class ProjectController extends Controller
             ->pluck('cat_id')
             ->toArray();
 
+        dd($jury_cats);
+
         $all_cats = Cat::orderBy('name')->wherein('id', $jury_cats)->pluck('name', 'id');
 
         $keyword = $request->get('search');
