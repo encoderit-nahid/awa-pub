@@ -1963,7 +1963,7 @@ class ProjectController extends Controller
   public function rejectProjectFirstRound(Request $data)
   {
     $id = $data->id;
-    $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->user()->id)->where('project_id', $id)->first();
+    $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->id())->where('project_id', $id)->first();
     $evaluation->status = 0;
     $evaluation->save();
 
