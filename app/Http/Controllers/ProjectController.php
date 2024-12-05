@@ -1859,9 +1859,14 @@ class ProjectController extends Controller
         }
 
         $count = $projects->count(); // Count the results before pagination
-        dd($projects->get()->toArray());
         $projects = $projects->distinct()->paginate(5);
         // New //
+
+        $FirstRoundEvaluation = FirstRoundEvaluation::where('jury_id', $user->id)
+            ->whereNull('status')
+            ->pluck('project_id')
+            ->toArray();
+        dd($FirstRoundEvaluation);
 
 
         $user_array = [];
