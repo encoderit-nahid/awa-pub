@@ -1832,14 +1832,15 @@ class ProjectController extends Controller
 //            }
 //        }
         // New //
-        $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-            ->select('projects.*')
+        $projects = Project::whereHas('firstRoundEvaluation', function ($query) {
+//                $query->whereNull('status');
+        })/*->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+            ->select('projects.*')*/
 //            ->where('first_round_evaluation.jury_id', '=', $user->id)
 //            ->whereNull('first_round_evaluation.status')
 //            ->when($project_with_search, function ($query) use ($project_with_search) {
 //                return $query->whereIn('projects.id', $project_with_search);
 //            })
-            ->with('firstRoundEvaluation')
             ->when($keyword, function ($query) use ($keyword) {
                 return $query->where(function ($query) use ($keyword) {
                     $query->where('name', 'LIKE', '%' . $keyword . '%')
