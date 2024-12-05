@@ -1744,8 +1744,8 @@ class ProjectController extends Controller
     public function ProjectFirstRound(Request $request, $cat_id = null)
     {
         $user = Auth::user();
-        $jury_cats = JuryCategoryPermission::where('user_id', 1157)
-//        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
+//        $jury_cats = JuryCategoryPermission::where('user_id', 1157)
+        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
             ->pluck('cat_id')
             ->toArray();
 
@@ -1955,11 +1955,14 @@ class ProjectController extends Controller
     {
         $id = $data->id;
 
-        $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->user()->id)->where('project_id', $id)->first();
-        if ($evaluation) {
-            $evaluation->status = 1;
-            $evaluation->save();
+        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->first();
+        if (!$evaluation) {
+            $evaluation = new FirstRoundEvaluation();
+            $evaluation->jury_id = auth()->id();
+            $evaluation->project_id = $id;
         }
+        $evaluation->status = 1;
+        $evaluation->save();
 
         $juries = FirstRoundEvaluation::where('project_id', $id)->count();
         $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 1)->count();
@@ -1999,10 +2002,13 @@ class ProjectController extends Controller
     {
         $id = $data->id;
         $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->id())->where('project_id', $id)->first();
-        if ($evaluation) {
-            $evaluation->status = 0;
-            $evaluation->save();
+        if (!$evaluation) {
+            $evaluation = new FirstRoundEvaluation();
+            $evaluation->jury_id = Auth()->id();
+            $evaluation->project_id = $id;
         }
+        $evaluation->status = 0;
+        $evaluation->save();
 
         $juries = FirstRoundEvaluation::where('project_id', $id)->count();
         $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 0)->count();
