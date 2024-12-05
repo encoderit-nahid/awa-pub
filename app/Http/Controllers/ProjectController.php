@@ -1863,7 +1863,7 @@ class ProjectController extends Controller
         $projects = $projects->distinct()->paginate(5);
         // New //
 
-        $FirstRoundEvaluation = FirstRoundEvaluation::where('jury_id', 1157)->get()->toArray();
+        $FirstRoundEvaluation = FirstRoundEvaluation::where('jury_id', 1157)->whereNull('status')->get()->toArray();
         dd($FirstRoundEvaluation);
 
 
