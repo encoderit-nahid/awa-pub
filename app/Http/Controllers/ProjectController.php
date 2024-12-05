@@ -1835,7 +1835,7 @@ class ProjectController extends Controller
 
         $projects = Project::with(['firstRoundEvaluation', 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
-                $query->whereNull('status');
+                $query->whereNull('firstRoundEvaluation.status');
             })
             ->when($keyword, function ($query) use ($keyword) {
                 return $query->where(function ($query) use ($keyword) {
