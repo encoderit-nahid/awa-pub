@@ -1859,9 +1859,9 @@ class ProjectController extends Controller
         }
 
         $count = $projects->count(); // Count the results before pagination
+        dd($projects->get()->toArray());
         $projects = $projects->distinct()->paginate(5);
         // New //
-        dd($projects);
 
 
         $user_array = [];
