@@ -1833,9 +1833,11 @@ class ProjectController extends Controller
 //        }
         // New //
 
-        $projects = Project::with(['firstRoundEvaluation', 'images'])
+        $projects = Project::with(['firstRoundEvaluation'=>function($query){
+            $query->whereNull('status');
+        }, 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
-                $query->whereNull('firstRoundEvaluation.status');
+                $query->whereNull('status');
             })
             ->when($keyword, function ($query) use ($keyword) {
                 return $query->where(function ($query) use ($keyword) {
