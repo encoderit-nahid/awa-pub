@@ -1832,16 +1832,10 @@ class ProjectController extends Controller
 //            }
 //        }
         // New //
-        $projects = Project::with('firstRoundEvaluation')
+        $projects = Project::with(['firstRoundEvaluation', 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
                 $query->whereNull('status');
-            })/*->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-            ->select('projects.*')*/
-//            ->where('first_round_evaluation.jury_id', '=', $user->id)
-//            ->whereNull('first_round_evaluation.status')
-//            ->when($project_with_search, function ($query) use ($project_with_search) {
-//                return $query->whereIn('projects.id', $project_with_search);
-//            })
+            })
             ->when($keyword, function ($query) use ($keyword) {
                 return $query->where(function ($query) use ($keyword) {
                     $query->where('name', 'LIKE', '%' . $keyword . '%')
@@ -1856,17 +1850,17 @@ class ProjectController extends Controller
             })
             ->where('stat', '0')
             ->where('is_selected_for_first_evaluation', true)
-            ->where('is_failed_first_evolution', false)
-            ->with('images');
+            ->where('is_failed_first_evolution', false);
 
-        if ($cat_id == null) {
+        if ($cat_id === null) {
             $projects->whereIn('cat_id', $jury_cats);
         } else {
             $projects->where('cat_id', $cat_id);
         }
-        $projects->distinct();
-        $count = $projects->count();
-        $projects = $projects->paginate(5);
+
+        $count = $projects->count(); // Count the results before pagination
+        $projects = $projects->distinct()->paginate(5);
+
         // New //
 
 
