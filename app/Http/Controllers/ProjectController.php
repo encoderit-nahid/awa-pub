@@ -1863,10 +1863,6 @@ class ProjectController extends Controller
         $projects = $projects->distinct()->paginate(5);
         // New //
 
-//        $FirstRoundEvaluation = FirstRoundEvaluation::where('jury_id', 1157)->whereNull('status')->get()->toArray();
-//        dd($FirstRoundEvaluation);
-
-
         $user_array = [];
         foreach ($projects as $project) {
             array_push($user_array, $project->user_id);
