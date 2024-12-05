@@ -1744,8 +1744,8 @@ class ProjectController extends Controller
     public function ProjectFirstRound(Request $request, $cat_id = null)
     {
         $user = Auth::user();
-//        $jury_cats = JuryCategoryPermission::where('user_id', 1157)
-        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
+        $jury_cats = JuryCategoryPermission::where('user_id', 1157)
+//        $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
             ->pluck('cat_id')
             ->toArray();
 
@@ -1953,7 +1953,7 @@ class ProjectController extends Controller
     {
         $id = $data->id;
 
-        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 1]);
+        $evaluation = FirstRoundEvaluation::where('jury_id', 1157)->where('project_id', $id)->update(['status' => 1]);
 
         dd($evaluation);
         if (!$evaluation) {
@@ -2001,7 +2001,7 @@ class ProjectController extends Controller
     public function rejectProjectFirstRound(Request $data)
     {
         $id = $data->id;
-        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 0]);
+        $evaluation = FirstRoundEvaluation::where('jury_id',1157)->where('project_id', $id)->update(['status' => 0]);
 
         dd($evaluation);
         if (!$evaluation) {
