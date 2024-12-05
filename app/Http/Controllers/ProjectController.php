@@ -1841,7 +1841,7 @@ class ProjectController extends Controller
                 $query->whereNull('status');
             })*/
         join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-            ->select('projects.*')
+
             ->where('first_round_evaluation.jury_id', '=', $user->id)
             ->whereNull('first_round_evaluation.status')
             ->when($keyword, function ($query) use ($keyword) {
