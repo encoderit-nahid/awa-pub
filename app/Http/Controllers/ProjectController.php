@@ -1833,7 +1833,7 @@ class ProjectController extends Controller
 //        }
         // New //
 
-        $projects = Project::with(['firstRoundEvaluation'=>function($query){
+        $projects = Project::with(['firstRoundEvaluation' => function ($query) {
             $query->whereNull('status');
         }, 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
@@ -1953,14 +1953,16 @@ class ProjectController extends Controller
     {
         $id = $data->id;
 
-        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->first();
+        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 1]);
+
+        dd($evaluation);
         if (!$evaluation) {
             $evaluation = new FirstRoundEvaluation();
             $evaluation->jury_id = auth()->id();
             $evaluation->project_id = $id;
+            $evaluation->status = 1;
+            $evaluation->save();
         }
-        $evaluation->status = 1;
-        $evaluation->save();
 
         $juries = FirstRoundEvaluation::where('project_id', $id)->count();
         $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 1)->count();
@@ -1999,14 +2001,16 @@ class ProjectController extends Controller
     public function rejectProjectFirstRound(Request $data)
     {
         $id = $data->id;
-        $evaluation = FirstRoundEvaluation::where('jury_id', Auth()->id())->where('project_id', $id)->first();
+        $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 0]);
+
+        dd($evaluation);
         if (!$evaluation) {
             $evaluation = new FirstRoundEvaluation();
-            $evaluation->jury_id = Auth()->id();
+            $evaluation->jury_id = auth()->id();
             $evaluation->project_id = $id;
+            $evaluation->status = 1;
+            $evaluation->save();
         }
-        $evaluation->status = 0;
-        $evaluation->save();
 
         $juries = FirstRoundEvaluation::where('project_id', $id)->count();
         $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 0)->count();
