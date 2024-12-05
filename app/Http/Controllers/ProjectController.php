@@ -1833,12 +1833,17 @@ class ProjectController extends Controller
 //        }
         // New //
 
-        $projects = Project::with(['firstRoundEvaluation'=>function($query){
+        $projects = Project::
+        /*with(['firstRoundEvaluation'=>function($query){
             $query->whereNull('status');
         }, 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
                 $query->whereNull('status');
-            })
+            })*/
+        join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
+            ->select('projects.*')
+            ->where('first_round_evaluation.jury_id', '=', $user->id)
+            ->whereNull('first_round_evaluation.status')
             ->when($keyword, function ($query) use ($keyword) {
                 return $query->where(function ($query) use ($keyword) {
                     $query->where('name', 'LIKE', '%' . $keyword . '%')
