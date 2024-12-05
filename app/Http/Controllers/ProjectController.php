@@ -1832,6 +1832,7 @@ class ProjectController extends Controller
 //            }
 //        }
         // New //
+
         $projects = Project::with(['firstRoundEvaluation', 'images'])
             ->whereHas('firstRoundEvaluation', function ($query) {
                 $query->whereNull('status');
