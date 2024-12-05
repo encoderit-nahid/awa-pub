@@ -1834,7 +1834,7 @@ class ProjectController extends Controller
         // New //
         $projects = Project::with('firstRoundEvaluation')
             ->whereHas('firstRoundEvaluation', function ($query) {
-//                $query->whereNull('status');
+                $query->whereNull('status');
             })/*->join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
             ->select('projects.*')*/
 //            ->where('first_round_evaluation.jury_id', '=', $user->id)
