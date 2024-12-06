@@ -1831,6 +1831,7 @@ class ProjectController extends Controller
           ->paginate(5);
       }
     }
+    dd($projects);
     // New //
 
     $PROJECTS = Project::with(['firstRoundEvaluation' => function ($query) {
