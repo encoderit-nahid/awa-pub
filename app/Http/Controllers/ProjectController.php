@@ -1954,7 +1954,9 @@ class ProjectController extends Controller
   {
     $id = $data->id;
 
-    $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 1]);
+    FirstRoundEvaluation::where('jury_id', auth()->id())
+      ->where('project_id', $id)
+      ->update(['status' => 1]);
 
     $juries = FirstRoundEvaluation::where('project_id', $id)->count();
     $juriesVote = FirstRoundEvaluation::where('project_id', $id)->where('status', 1)->count();
@@ -1993,7 +1995,9 @@ class ProjectController extends Controller
   public function rejectProjectFirstRound(Request $data)
   {
     $id = $data->id;
-    $evaluation = FirstRoundEvaluation::where('jury_id', auth()->id())->where('project_id', $id)->update(['status' => 0]);
+    FirstRoundEvaluation::where('jury_id', 1157)
+      ->where('project_id', $id)
+      ->update(['status' => 0]);
 
 //    if (!$evaluation) {
 //      $evaluation = new FirstRoundEvaluation();
