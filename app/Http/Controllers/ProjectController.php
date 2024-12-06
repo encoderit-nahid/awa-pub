@@ -1744,8 +1744,9 @@ class ProjectController extends Controller
   public function ProjectFirstRound(Request $request, $cat_id = null)
   {
     $user = Auth::user();
-        $jury_cats = JuryCategoryPermission::where('user_id', 1157)
-//    $jury_cats = JuryCategoryPermission::where('user_id', $user->id)
+    $userId = 1157;
+//    $userId = $user->id;
+    $jury_cats = JuryCategoryPermission::where('user_id', $userId)
       ->pluck('cat_id')
       ->toArray();
 
@@ -1833,11 +1834,11 @@ class ProjectController extends Controller
 //        }
     // New //
 
-    $projects = Project::with(['firstRoundEvaluation' => function ($query) {
-      $query->where('jury_id', 1157)->whereNull('status');
-    }, 'images'])
-      ->whereHas('firstRoundEvaluation', function ($query) {
-        $query->where('jury_id', 1157)->whereNull('status');
+    $projects = Project::with(['images', 'firstRoundEvaluation' => function ($query) use ($userId) {
+      $query->where('jury_id', $userId)->whereNull('status');
+    }])
+      ->whereHas('firstRoundEvaluation', function ($query) use ($userId) {
+        $query->where('jury_id', $userId)->whereNull('status');
       })
       ->when($keyword, function ($query) use ($keyword) {
         return $query->where(function ($query) use ($keyword) {
