@@ -1758,8 +1758,8 @@ class ProjectController extends Controller
       /*search in project*/
       $project_with_search = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
         ->select('projects.*')
-//                ->where('first_round_evaluation.jury_id', '=', $user->id)
-//                ->whereNull('first_round_evaluation.status')
+        ->where('first_round_evaluation.jury_id', '=', $user->id)
+        ->whereNull('first_round_evaluation.status')
         ->where(function ($query) use ($keyword) {
           $query->where('name', 'LIKE', '%' . $keyword . '%')
             ->orWhere('projektname', 'LIKE', '%' . $keyword . '%')
@@ -1792,7 +1792,7 @@ class ProjectController extends Controller
           ->paginate(5);
       } else {
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->select('projects.*')
+//          ->select('projects.*')
           ->where('first_round_evaluation.jury_id', '=', $user->id)
           ->whereNull('first_round_evaluation.status')
           ->whereIn('projects.id', $project_with_search)
@@ -1819,7 +1819,7 @@ class ProjectController extends Controller
           ->paginate(5);
       } else {
         $projects = Project::join('first_round_evaluation', 'first_round_evaluation.project_id', '=', 'projects.id')
-          ->select('projects.*')
+//          ->select('projects.*')
           ->where('first_round_evaluation.jury_id', '=', $user->id)
           ->whereNull('first_round_evaluation.status')
           ->where('stat', '0')
