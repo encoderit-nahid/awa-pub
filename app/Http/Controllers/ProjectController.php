@@ -1744,8 +1744,7 @@ class ProjectController extends Controller
   public function ProjectFirstRound(Request $request, $cat_id = null)
   {
     $user = Auth::user();
-    $userId = 1157;
-//    $userId = $user->id;
+    $userId = $user->id;
     $jury_cats = JuryCategoryPermission::where('user_id', $userId)
       ->pluck('cat_id')
       ->toArray();
@@ -1995,7 +1994,7 @@ class ProjectController extends Controller
   public function rejectProjectFirstRound(Request $data)
   {
     $id = $data->id;
-    FirstRoundEvaluation::where('jury_id', 1157)
+    FirstRoundEvaluation::where('jury_id', auth()->id())
       ->where('project_id', $id)
       ->update(['status' => 0]);
 
