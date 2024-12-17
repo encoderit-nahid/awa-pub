@@ -1668,9 +1668,7 @@ class ProjectController extends Controller
         $all_cats = Cat::orderBy('name')->pluck('name', 'id');
         $pids = Count::WHERE('user_id', $user->id)->pluck('project_id');
 
-        $projects = Project::where('stat', '=', '2')
-            ->where('jury', '=', '1')
-            ->with('images');
+        $projects = Project::with('images');
         if ($cat_id != null) {
             $projects = $projects->where('cat_id', $cat_id);
         }
