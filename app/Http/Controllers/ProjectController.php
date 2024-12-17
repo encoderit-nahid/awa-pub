@@ -1680,7 +1680,7 @@ class ProjectController extends Controller
         if ($user->rolle == 2) {
             $projects = $projects->where('special', '1');
         }
-        dd($projects->get());
+        dd($projects->pluck('id', 'name')->get());
         $projects = $projects->paginate(5);
 
 
