@@ -1663,7 +1663,6 @@ class ProjectController extends Controller
 
     public function ProjectBewerten(Request $request, $cat_id = null)
     {
-
         $user = Auth::user();
         $all_cats = Cat::orderBy('name')->pluck('name', 'id');
         $pids = Count::WHERE('user_id', $user->id)->pluck('project_id');
