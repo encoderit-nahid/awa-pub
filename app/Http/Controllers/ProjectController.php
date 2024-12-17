@@ -1708,7 +1708,6 @@ class ProjectController extends Controller
                 'next_page' => $projects->nextPageUrl()
             ];
         } else {
-
             $count = Project::where('stat', '=', '2')
                 ->where('jury', '=', '1')
                 ->with('images');
