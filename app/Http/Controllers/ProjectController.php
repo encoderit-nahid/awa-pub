@@ -1673,12 +1673,12 @@ class ProjectController extends Controller
         if ($cat_id != null) {
             $projects = $projects->where('cat_id', $cat_id);
         }
-        if (count($pids) != 0) {
-            $projects = $projects->whereNotIn('id', $pids);
-        }
-        if ($user->rolle == 2) {
-            $projects = $projects->where('special', '1');
-        }
+//        if (count($pids) != 0) {
+//            $projects = $projects->whereNotIn('id', $pids);
+//        }
+//        if ($user->rolle == 2) {
+//            $projects = $projects->where('special', '1');
+//        }
         $projects = $projects->paginate(5);
 
         if ($request->ajax()) {
