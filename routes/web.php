@@ -335,7 +335,7 @@ Route::get('test', function () {
     $project = Project::WhereIn('projektname', $projectArray)->get();
 
     foreach ($project as $p) {
-        $p->update(['stat' => 2]);
+        $p->update(['stat' => 2, 'jury' => 1]);
     }
 //    dd($project);
 })->name('developer-update-category');

@@ -1668,7 +1668,7 @@ class ProjectController extends Controller
         $pids = Count::WHERE('user_id', $user->id)->pluck('project_id');
 
         $projects = Project::where('stat', '=', '2')
-            //->where('jury', '=', '1')
+            ->where('jury', '=', '1')
             ->with('images');
         if ($cat_id != null) {
             $projects = $projects->where('cat_id', $cat_id);
@@ -1679,8 +1679,8 @@ class ProjectController extends Controller
         if ($user->rolle == 2) {
             $projects = $projects->where('special', '1');
         }
-//        $projects = $projects->paginate(5);
-        $projects = $projects->paginate(100);
+        $projects = $projects->paginate(5);
+//        $projects = $projects->paginate(100);
 
         if ($request->ajax()) {
             $count = Project::where('stat', '=', '2')
