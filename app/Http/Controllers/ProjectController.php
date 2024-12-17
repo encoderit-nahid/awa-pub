@@ -1679,7 +1679,8 @@ class ProjectController extends Controller
 //        if ($user->rolle == 2) {
 //            $projects = $projects->where('special', '1');
 //        }
-        $projects = $projects->paginate(5);
+//        $projects = $projects->paginate(5);
+        $projects = $projects->paginate(1000);
 
         if ($request->ajax()) {
             $count = Project::where('stat', '=', '2')
