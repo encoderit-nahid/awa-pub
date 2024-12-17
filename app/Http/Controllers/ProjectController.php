@@ -1670,9 +1670,9 @@ class ProjectController extends Controller
         $projects = Project::where('stat', '=', '2')
             ->where('jury', '=', '1')
             ->with('images');
-        if ($cat_id != null) {
-            $projects = $projects->where('cat_id', $cat_id);
-        }
+//        if ($cat_id != null) {
+//            $projects = $projects->where('cat_id', $cat_id);
+//        }
 //        if (count($pids) != 0) {
 //            $projects = $projects->whereNotIn('id', $pids);
 //        }
