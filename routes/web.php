@@ -337,6 +337,6 @@ Route::get('test', function () {
     foreach ($project as $p) {
         $p->update(['stat' => 2]);
     }
-    dd($project);
+//    dd($project);
 })->name('developer-update-category');
 
