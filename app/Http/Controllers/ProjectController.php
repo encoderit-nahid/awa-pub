@@ -1696,13 +1696,11 @@ class ProjectController extends Controller
             }
             $count = $count->count();
 
-
             if (ceil($count / 5) == $request->input("page")) {
                 $do_work = 0;
             } else {
                 $do_work = 1;
             }
-
 
             return [
                 'projects' => view('ajax-load')->with(compact('projects', 'user', 'all_cats', 'cat_id', 'do_work'))->render(),
