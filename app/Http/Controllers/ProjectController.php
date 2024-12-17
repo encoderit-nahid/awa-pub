@@ -1681,7 +1681,6 @@ class ProjectController extends Controller
         }
         $projects = $projects->paginate(5);
 
-
         if ($request->ajax()) {
             $count = Project::where('stat', '=', '2')
                 ->where('jury', '=', '1')

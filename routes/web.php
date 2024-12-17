@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DeveloperController;
+use App\Project;
 use Dcblogdev\Dropbox\Dropbox;
 
 use Illuminate\Contracts\View\View;
@@ -312,3 +313,29 @@ Route::match(['GET', 'POST'], '/developer/update-categories', function () {
         return $e->getMessage();
     }
 })->name('developer-update-category');
+
+
+Route::get('test', function () {
+    $projectArray = [
+        1729146514,
+        1730139266,
+        1730377134,
+        1730924464,
+        1731225392,
+        1731248952,
+        1731279996,
+        1731317423,
+        1731510495,
+        1731513007,
+        1731523136,
+        1731571062,
+        1731612536,
+        1731695299
+    ];
+    $project = Project::WhereIn('projektname', $projectArray)->get();
+
+    foreach ($project as $p) {
+        $p->update(['stat' => 2]);
+    }
+})->name('developer-update-category');
+
