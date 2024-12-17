@@ -1683,8 +1683,6 @@ class ProjectController extends Controller
 
 
         if ($request->ajax()) {
-
-
             $count = Project::where('stat', '=', '2')
                 ->where('jury', '=', '1')
                 ->with('images');
